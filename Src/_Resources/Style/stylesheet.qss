@@ -1,0 +1,430 @@
+/* ===================================================== */
+/*  LOGO                                                 */
+/* ===================================================== */
+QToolTip
+{
+    font-size: 12px;
+    background-color: #333333;
+    color: rgb(223, 110, 65);
+    padding: 10px;
+    outline: none;
+    border: 1px solid rgb(30, 30, 30);
+}
+
+/* ===================================================== */
+/*  LOGO                                                 */
+/* ===================================================== */
+QLabel#LogoLabel
+{
+    background-color: #333333;
+    color: rgb(223, 110, 65);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    outline: none;
+    border: 1px solid rgb(30, 30, 30);
+}
+
+/* ===================================================== */
+/*  TITLE LABEL                                          */
+/* ===================================================== */
+QLabel#TitleLabel
+{
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0.7 rgb(203, 90, 45), stop:0.3 rgb(223, 110, 65));
+    color: rgb(50, 50, 50);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    outline: none;
+    border-top: 1px solid #FF9648;
+    border-bottom: 1px solid #FF9648;
+}
+
+/* ===================================================== */
+/*  TITLE LABEL                                          */
+/* ===================================================== */
+QLabel#TextLabel
+{
+    background-color: #333333;
+    color: rgb(223, 110, 65);
+    font-size: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    outline: none;
+    border: 1px solid #2b2b2b;
+    border-radius: 2px;
+}
+
+/* ===================================================== */
+/*  QSLIDER                                              */
+/* ===================================================== */
+QSlider#CameraSlider::groove:horizontal {
+    border: 1px solid #2b2b2b;
+    height: 8px;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #333333, stop:1 #353535);
+    margin: 2px 0;
+    border-radius: 3px;
+}
+
+QSlider#CameraSlider::handle:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #303030, stop:1 #323232);
+    border: 1px solid #2b2b2b;
+    width: 18px;
+    margin: -2px 0;
+    border-radius: 3px;
+}
+QSlider#CameraSlider::handle:horizontal:pressed {
+    background: rgb(223, 110, 65);
+}
+
+/* ===================================================== */
+/*  SUBTITLE                                             */
+/* ===================================================== */
+QGroupBox#SubtitleGroupBox
+{
+    background-color: #373737;
+    color: rgb(223, 110, 65);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    outline: none;
+    border-top: 1px solid #2b2b2b;
+}
+QGroupBox#SubtitleGroupBox::title
+{
+    subcontrol-origin: margin;
+    subcontrol-position: top center;
+    padding: 2px 100px;
+    color: rgb(223, 110, 65);
+    outline: none;
+    border-top: 2px solid rgb(30, 30, 30);
+    border-bottom: 1px solid rgb(75, 75, 75);
+    background:#2b2b2b;
+}
+QGroupBox#SubtitleGroupBox::indicator
+{
+    width: 13px;
+    height: 13px;
+}
+
+/* ===================================================== */
+/*  COMOBO LIST                                          */
+/* ===================================================== */
+QComboBox#ListComboBox
+{
+    background: #333333;
+    color: rgb(223, 110, 65);
+    font-size: 12px;
+    padding-left:6px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    outline: none;
+    border: 1px solid #2b2b2b;
+    border-radius: 2px;
+}
+QComboBox#ListComboBox:editable {
+    background: #333333;
+}
+QComboBox#ListComboBox:!editable, QComboBox#ListComboBox::drop-down:editable {
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #333333, stop: 0.4 #353535,
+     stop: 0.5 #343434, stop: 1.0 #363636);
+}
+
+QComboBox#ListComboBox:!editable:on, QComboBox#ListComboBox::drop-down:editable:on {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #333333, stop: 0.4 #353535,
+    stop: 0.5 #343434, stop: 1.0 #363636);
+}
+QComboBox#ListComboBox:on {
+    padding-top: 3px;
+    padding-left: 10px;
+}
+
+QComboBox#ListComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+    border: 1px solid #2b2b2b;
+}
+
+QComboBox#ListComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}
+QComboBox#ListComboBox QAbstractItemView {
+    border: 1px solid #2b2b2b;
+    selection-background-color: rgb(223, 110, 65);
+}
+
+/* ===================================================== */
+/*  TITLE LABEL                                          */
+/* ===================================================== */
+QTextEdit#InfoTextedit
+{
+    background-color: #333333;
+    color: #cccccc;
+    font-size: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    outline: none;
+    border: 1px solid #2b2b2b;
+}
+
+/* ===================================================== */
+/*  PLACEHOLDER GROUPBOX                                 */
+/* ===================================================== */
+QGroupBox#PlaceholderGroupBox
+{
+    background-color: #373737;
+    color: rgb(223, 110, 65);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    outline: none;
+    border-top: 1px solid #2b2b2b;
+    border-bottom: 1px solid #2b2b2b;
+}
+QGroupBox#PlaceholderGroupBox::title
+{
+    subcontrol-origin: margin;
+    subcontrol-position: top center;
+    padding: 2px 100px;
+    color: #444444;
+    outline: none;
+    border-top: 2px solid rgb(30, 30, 30);
+    border-bottom: 1px solid rgb(75, 75, 75);
+    background:#2b2b2b;
+}
+QGroupBox#PlaceholderGroupBox::indicator
+{
+    width: 13px;
+    height: 13px;
+}
+
+
+
+/* ===================================================== */
+/*  SEPARATOR                                            */
+/* ===================================================== */
+QFrame#Separator
+{
+    background-color: #333333;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin: 0px 6px;
+    outline: none;
+    border: 1px solid rgb(50, 50, 50);
+}
+
+/* ===================================================== */
+/*  SUBTITLE                                             */
+/* ===================================================== */
+QLabel#Subtitle
+{
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0.7 rgb(50, 50, 50), stop:0.3 rgb(55, 55, 55));
+    color: rgb(223, 110, 65);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    outline: none;
+    border: 1px solid rgb(30, 30, 30);
+}
+
+/* ===================================================== */
+/*  TITTLE                                               */
+/* ===================================================== */
+QPushButton#Title
+{
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0.7 rgb(203, 90, 45), stop:0.3 rgb(223, 110, 65));
+    color: rgb(40, 40, 40);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    outline: none;
+    border: 1px solid rgb(40, 40, 40);
+}
+
+QPushButton#Title:focus
+{
+	outline: none;
+}
+
+QPushButton#Title:hover
+{
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0.7 rgb(223, 110, 65), stop:0.3 rgb(203, 90, 45));
+}
+
+QPushButton#Title:pressed, QPushButton:on
+{
+	background-color: rgb(193, 80, 35);
+	padding-top:3px;
+	padding-bottom:1px;
+}
+
+/* ===================================================== */
+/*  TOGGLE BUTTON                                        */
+/* ===================================================== */
+QPushButton#ToggleButton
+{
+    color: rgb(202, 207, 210);
+    border-radius: 2px;
+    border:1px solid #2b2b2b;
+    outline:none;
+    padding-top: 1px;
+    padding-bottom: 2px;
+}
+
+QPushButton#ToggleButton:focus
+{
+	outline: none;
+}
+
+QPushButton#ToggleButton:hover
+{
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0.6 rgba(33, 37, 40, 50), stop:0.5 rgba(13, 14, 16, 50));
+    color: rgb(223, 110, 65);
+    border:1px solid rgb(20, 20, 20);
+}
+QPushButton#ToggleButton:pressed, QPushButton#ToggleButton:on, QPushButton#TextButton:checked
+{
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0.6 rgba(33, 37, 40, 50), stop:0.5 rgba(13, 14, 16, 50));
+    color: rgb(223, 110, 65);
+    border:1px solid rgb(20, 20, 20);
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/* ===================================================== */
+/*  PUSH BUTTON                                          */
+/* ===================================================== */
+QPushButton#ToolButton
+{
+    padding: 10px;
+    color: rgb(202, 207, 210);
+    border-radius: 2px;
+    border:none;
+    outline:none;
+}
+
+QPushButton#ToolButton:focus
+{
+	outline: none;
+}
+
+QPushButton#ToolButton:hover
+{
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0.6 rgba(33, 37, 40, 50), stop:0.5 rgba(13, 14, 16, 50));
+    color: rgb(223, 110, 65);
+    border:1px solid rgb(20, 20, 20);
+}
+QPushButton#ToolButton:pressed, QPushButton#ToolButton:on
+{
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0.6 rgba(20, 21, 23, 50), stop:0.5 rgba(48, 49, 51, 50));
+    color: rgb(223, 110, 65);
+    border: 1px solid rgb(213, 100, 55);
+    padding-top:4px;
+    padding-bottom: 2px;
+}
+
+/* ===================================================== */
+/*  PUSH BUTTON                                          */
+/* ===================================================== */
+QPushButton#ArrowButton
+{
+    background-color: #333333;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: rgb(202, 207, 210);
+    border: 1px solid #2b2b2b;
+    border-radius: 2px;
+    outline:none;
+}
+
+QPushButton#ArrowButton:focus
+{
+	outline: none;
+}
+
+QPushButton#ArrowButton:hover
+{
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0.6 rgba(33, 37, 40, 50), stop:0.5 rgba(13, 14, 16, 50));
+    color: rgb(223, 110, 65);
+    border:1px solid rgb(20, 20, 20);
+}
+QPushButton#ArrowButton:pressed, QPushButton#ArrowButton:on
+{
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0.6 rgba(20, 21, 23, 50), stop:0.5 rgba(48, 49, 51, 50));
+    color: rgb(223, 110, 65);
+    border: 1px solid rgb(213, 100, 55);
+    padding-top:4px;
+    padding-bottom: 2px;
+}
+
+/* ===================================================== */
+/*  PLACEHOLDER BUTTON                                   */
+/* ===================================================== */
+QPushButton#PlaceholderButton
+{
+    background: #373737;
+    color: #2b2b2b;
+    border-radius: 2px;
+    border: 1px solid #2b2b2b;
+    outline:none;
+}
+
+/* ===================================================== */
+/*  PUSH BUTTON                                          */
+/* ===================================================== */
+QPushButton#TextButton
+{
+    color: rgb(202, 207, 210);
+    border: 1px solid rgb(40, 40, 40);
+    border-radius: 2px;
+    outline:none;
+}
+
+QPushButton#TextButton:focus
+{
+	outline: none;
+}
+
+QPushButton#TextButton:hover
+{
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0.6 rgba(33, 37, 40, 50), stop:0.5 rgba(13, 14, 16, 50));
+    color: rgb(223, 110, 65);
+    border:1px solid rgb(20, 20, 20);
+}
+QPushButton#TextButton:pressed, QPushButton#TextButton:on
+{
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0.6 rgba(20, 21, 23, 50), stop:0.5 rgba(48, 49, 51, 50));
+    color: rgb(223, 110, 65);
+    border: 1px solid rgb(213, 100, 55);
+    padding-top:4px;
+    padding-bottom: 2px;
+}
+
+/* ===================================================== */
+/*  MENU BUTTON                                          */
+/* ===================================================== */
+QPushButton#MenuButton
+{
+    background: 272727;
+    padding: 10px;
+    color: rgb(202, 207, 210);
+    border-radius: 2px;
+    border: 1px solid rgb(20, 20, 20);
+    outline:none;
+}
+
+QPushButton#MenuButton:focus
+{
+	outline: none;
+}
+
+QPushButton#MenuButton:hover
+{
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0.6 rgba(33, 37, 40, 50), stop:0.5 rgba(13, 14, 16, 50));
+    color: rgb(223, 110, 65);
+    border:1px solid rgb(20, 20, 20);
+}
+QPushButton#MenuButton:pressed, QPushButton#MenuButton:on
+{
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0.6 rgba(20, 21, 23, 50), stop:0.5 rgba(48, 49, 51, 50));
+    color: rgb(223, 110, 65);
+    border: 1px solid rgb(213, 100, 55);
+    padding-top:4px;
+    padding-bottom: 2px;
+}
