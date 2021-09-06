@@ -379,9 +379,11 @@ class Trigger(cor.QObject):
 
     def prev_key(self, modifier=None):
         print('prev_key')
+        self._playback_tools.prev_key()
 
     def next_key(self, modifier=None):
         print('next_key')
+        self._playback_tools.next_key()
 
     def end_frame(self, modifier=None):
         print('end_frame')
