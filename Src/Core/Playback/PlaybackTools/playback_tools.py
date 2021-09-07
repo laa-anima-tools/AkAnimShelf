@@ -14,11 +14,15 @@ import PySide2.QtCore as cor
 
 from AkAnimShelf.Src.Utils import playback_utils
 from AkAnimShelf.Src.Data import playback_data
+from timeline_marker.ui import TimelineMarker
 
 reload(playback_utils)
 
 TIMEOUT = 100
 LOOP, STOP, MOVE, EXPAND = 0, 1, 2, 3
+KEY, BREAKDOWN, INBETWEEN = 0, 1, 2
+RED, GREEN, YELLOW = (255, 0, 0), (0, 255, 0), (255, 255, 0)
+COLOR, TYPE = 0, 1
 
 
 class PlaybackTools(object):
@@ -31,6 +35,12 @@ class PlaybackTools(object):
         self.timer = cor.QTimer()
         self.timeout = TIMEOUT
         self._playback_mode = self._playback_data.get_playback_mode()
+
+        self.timeline_markers = {
+            KEY: [RED, 'key'],
+            BREAKDOWN: [GREEN, 'breakdown'],
+            INBETWEEN: [YELLOW, 'inbetween']
+        }
 
     # ============================================================================= #
     # STATIC METHODS                                                                #
@@ -192,13 +202,20 @@ class PlaybackTools(object):
         cmd.undoInfo(state=True)
 
     # ============================================================================= #
-    # NEXT KEY                                                                      #
+    # PREV KEY                                                                      #
     # ============================================================================= #
     def prev_key(self):
         cmd.undoInfo(state=False)
         prev_key = cmd.findKeyframe(timeSlider=True, which="previous")
         self._playback_utils.set_current_time(prev_key)
         cmd.undoInfo(state=True)
+
+    # ============================================================================= #
+    # ADD TIMELINE MARKER                                                           #
+    # ============================================================================= #
+    def add_timeline_marker(self, marker):
+        current_time = self._playback_utils.get_current_time()
+        TimelineMarker.add(current_time, self.timeline_markers[marker][COLOR], self.timeline_markers[marker][TYPE])
 
     def crop_timeline_left(self):
         current_time = self._playback_utils.get_current_time()

@@ -385,6 +385,10 @@ class Trigger(cor.QObject):
         print('next_key')
         self._playback_tools.next_key()
 
+    def add_timeline_marker(self, marker):
+        print('add_timeline_marker')
+        self._playback_tools.add_timeline_marker(marker)
+
     def end_frame(self, modifier=None):
         print('end_frame')
 
