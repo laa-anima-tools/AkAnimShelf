@@ -389,6 +389,31 @@ class Trigger(cor.QObject):
         print('add_timeline_marker')
         self._playback_tools.add_timeline_marker(marker)
 
+    def remove_timeline_marker(self):
+        print('remove_timeline_marker')
+        self._playback_tools.remove_timeline_marker()
+
+    # ============================================================================= #
+    # LIST MARKER KEYTIMES                                                          #
+    # ============================================================================= #
+    def list_markers_keytimes(self, marker_type):
+        print('list_marker_keytimes')
+        self._playback_tools.list_markers_keytimes()
+
+    # ============================================================================= #
+    # SHARE KEYS ON MARKERS                                                         #
+    # ============================================================================= #
+    def share_keys_on_markers(self, marker_type):
+        print('share_keys_on_markers')
+        self._playback_tools.share_keys_on_markers()
+
+    # ============================================================================= #
+    # GO TO THE NEXT MARKER                                                         #
+    # ============================================================================= #
+    def go_to_the_next_marker(self, marker_type):
+        print('go_to_the_next_marker')
+        self._playback_tools.go_to_the_next_marker()
+
     def end_frame(self, modifier=None):
         print('end_frame')
 

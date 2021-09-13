@@ -10,6 +10,7 @@ VERSION:  v1.0.0 | Maya 2018 | Python 2
 =============================================================================
 """
 import maya.cmds as cmd
+import json
 import PySide2.QtCore as cor
 
 from AkAnimShelf.Src.Utils import playback_utils
@@ -23,6 +24,8 @@ LOOP, STOP, MOVE, EXPAND = 0, 1, 2, 3
 KEY, BREAKDOWN, INBETWEEN = 0, 1, 2
 RED, GREEN, YELLOW = (255, 0, 0), (0, 255, 0), (255, 255, 0)
 COLOR, TYPE = 0, 1
+
+TIMELINE_MARKER = "timeline-marker"
 
 
 class PlaybackTools(object):
@@ -216,6 +219,74 @@ class PlaybackTools(object):
     def add_timeline_marker(self, marker):
         current_time = self._playback_utils.get_current_time()
         TimelineMarker.add(current_time, self.timeline_markers[marker][COLOR], self.timeline_markers[marker][TYPE])
+
+    # ============================================================================= #
+    # REMOVE TIMELINE MARKER                                                        #
+    # ============================================================================= #
+    def remove_timeline_marker(self):
+        current_time = self._playback_utils.get_current_time()
+        TimelineMarker.remove(current_time)
+
+    # ============================================================================= #
+    # LIST MARKERS KEYTIMES                                                          #
+    # ============================================================================= #
+    def list_markers_keytimes(self, marker_type=KEY):
+        data = cmd.fileInfo(TIMELINE_MARKER, query=True)
+        data = json.loads(data[0].replace('\\"', '"')) if data else {}
+        frame_keytimes = []
+
+        # for frame, frame_data in data.items():
+        #     print "{0}{1}".format(frame, frame_data)
+
+        for frame in data.items():
+            # frame_keytimes.append(int(frame[0].split('.')[0]))
+            frame_keytimes.append(float(frame[0]))
+
+        return sorted(frame_keytimes)
+
+    # ============================================================================= #
+    # SHARE KEYS ON MARKERS                                                         #
+    # ============================================================================= #
+    def share_keys_on_markers(self, marker_type=KEY):
+        print(type(self._playback_utils.get_current_time()))
+        print(type(self.list_markers_keytimes()[0]))
+        print(self.list_markers_keytimes()[0])
+        # frame_keytimes = self.list_markers_keytimes()
+        # print frame_keytimes
+
+    # ============================================================================= #
+    # GO TO THE NEXT MARKER                                                         #
+    # ============================================================================= #
+    def go_to_the_next_marker(self, marker_type=KEY):
+        current_time = self._playback_utils.get_current_time()
+        frame_keytimes = self.list_markers_keytimes()
+
+        print "{0} --- {1}".format(current_time, frame_keytimes)
+
+        if current_time in frame_keytimes:
+            print ('in')
+        else:
+            print('out')
+
+        try:
+            if current_time == frame_keytimes[-1]:
+                self._playback_utils.set_current_time(frame_keytimes[0])
+            else:
+                i = frame_keytimes.index(current_time)
+                self._playback_utils.set_current_time(frame_keytimes[i+1])
+        except:
+            pass
+            # while current_time not in frame_keytimes:
+            #     self.go_to_the_next_frame()
+            #     current_time = str(self._playback_utils.get_current_time())
+            # print "error"
+
+        # for frame in frame_keytimes:
+        #
+        # if current_time in frame_keytimes:
+        #     print "next_marker_in"
+        # else:
+        #     print "next_marker_out"
 
     def crop_timeline_left(self):
         current_time = self._playback_utils.get_current_time()
