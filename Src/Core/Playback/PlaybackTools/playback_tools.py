@@ -19,7 +19,7 @@ from timeline_marker.ui import TimelineMarker
 
 reload(playback_utils)
 
-TIMEOUT = 100
+TIMEOUT = 150
 LOOP, STOP, MOVE, EXPAND = 0, 1, 2, 3
 KEY, BREAKDOWN, INBETWEEN = 0, 1, 2
 RED, GREEN, YELLOW = (255, 0, 0), (0, 255, 0), (255, 255, 0)
