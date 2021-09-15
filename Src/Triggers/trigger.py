@@ -26,6 +26,9 @@ import maya.cmds as cmd
 # from AkAnimShelf.Src.Core.Selection import selector as sel; reload(sel)
 # from AkAnimShelf.Src.Core.Viewport import viewport_tools as vpt; reload(vpt)
 from AkAnimShelf.Src.Core.Playback.PlaybackTools import playback_tools as pbt; reload(pbt)
+from AkAnimShelf.Src.Core.Keyframing.GraphEditor import graph_editor as grp; reload(grp)
+from AkAnimShelf.Src.Utils import info_utils as info; reload(info)
+from AkAnimShelf.Src.Data import user_data as data; reload(data)
 
 MOVE, ROTATE, SCALE = 'Move', 'Rotate', 'Scale'
 MODIFIER = 'Control', 'Alt', 'Shift'
@@ -51,9 +54,19 @@ class Trigger(cor.QObject):
         # self._selector = sel.Selector()
         # self._viewport_tools = vpt.ViewportTools()
         self._playback_tools = pbt.PlaybackTools()
+        self._graph_editor = grp.GraphEditor()
 
         self._selected_channels = []
         self._colors = [RED, GREEN, BLUE, YELLOW, PINK, ORANGE]
+
+    # ============================================================================= #
+    # SLICE CURVES                                                                  #
+    # ============================================================================= #
+    def smart_key(self):
+        print('smart_key')
+        info.show_message('Smart Key')
+        data.UserData().read_data()
+        self._graph_editor.smart_key()
 
     # =========================================================================
     # COMMON TOOLS TRIGGER
