@@ -15,7 +15,7 @@ import PySide2.QtCore as cor
 
 from AkAnimShelf.Src.Utils import playback_utils
 from AkAnimShelf.Src.Data import playback_data
-from timeline_marker.ui import TimelineMarker
+# from timeline_marker.ui import TimelineMarker
 
 reload(playback_utils)
 

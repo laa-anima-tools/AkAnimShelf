@@ -9,9 +9,6 @@ import maya.OpenMayaUI as omui
 
 
 def maya_main_window():
-    """
-    Return the Maya main window widget as a Python object
-    """
     main_window_ptr = omui.MQtUtil.mainWindow()
     return wrapInstance(long(main_window_ptr), QtWidgets.QWidget)
 
@@ -29,7 +26,6 @@ class KeyMarkers(QtWidgets.QWidget):
 
         self.frame_times = [1, 6, 8, 10, 19, 30, 39, 50, 51, 52, 53, 54, 120]
 
-        self.set_context_menu_enabled(False)
 
     def add_frame(self):
         current_time = cmds.currentTime(q=True)
@@ -63,46 +59,6 @@ class KeyMarkers(QtWidgets.QWidget):
         selected_range = cmds.timeControl(self.time_control, q=True, rangeArray=True)
         return [int(selected_range[0]), int(selected_range[1])]
 
-    def set_context_menu_enabled(self, enabled):
-        self.context_menu_enabled = enabled
-
-    def mousePressEvent(self, mouse_event):
-        if mouse_event.button() == QtCore.Qt.RightButton:
-            if self.context_menu_enabled:
-
-                context_menu = QtWidgets.QMenu()
-
-                title_action = context_menu.addAction("Timeline Overlay")
-                title_action.setDisabled(True)
-                context_menu.addSeparator()
-
-                action = context_menu.addAction("Add Frame")
-                action.triggered.connect(self.add_frame)
-
-                action = context_menu.addAction("Add Frames")
-                action.triggered.connect(self.add_frames)
-
-                context_menu.addSeparator()
-
-                action = context_menu.addAction("Remove Frame")
-                action.triggered.connect(self.remove_frame)
-
-                action = context_menu.addAction("Remove Frames")
-                action.triggered.connect(self.remove_frames)
-
-                context_menu.exec_(self.mapToGlobal(mouse_event.pos()))
-
-                return
-
-        mouse_event.ignore()
-
-    def mouseReleaseEvent(self, mouse_event):
-        if mouse_event.button() == QtCore.Qt.RightButton:
-            if self.context_menu_enabled:
-
-                return
-
-        mouse_event.ignore()
 
     def paintEvent(self, paint_event):
         parent = self.parentWidget()
@@ -136,101 +92,62 @@ class KeyMarkers(QtWidgets.QWidget):
                 painter.drawRect(frame_x, frame_y, frame_width, frame_height)
 
 
+# class KeyMarkersDialog(QtWidgets.QDialog):
+#
+#     timeline_overlay = None
+#
+#     @classmethod
+#     def delete_overlays(cls):
+#         if KeyMarkersDialog.timeline_overlay:
+#             KeyMarkersDialog.timeline_overlay.setParent(None)
+#             KeyMarkersDialog.timeline_overlay.deleteLater()
+#             KeyMarkersDialog.timeline_overlay = None
+#
+#     def __init__(self, parent=maya_main_window()):
+#         super(KeyMarkersDialog, self).__init__(parent)
+#         self.set_overlay_visible(True)
+#
+#
+#     def set_overlay_visible(self, visible):
+#         if visible:
+#             if not KeyMarkersDialog.timeline_overlay:
+#                 KeyMarkersDialog.timeline_overlay = KeyMarkers()
+#
+#         if KeyMarkersDialog.timeline_overlay:
+#             KeyMarkersDialog.timeline_overlay.setVisible(visible)
+#
+#
+# if __name__ == "__main__":
+#
+#     try:
+#         overlay_dialog.close() # pylint: disable=E0601
+#         overlay_dialog.deleteLater()
+#     except:
+#         pass
+#
+#     overlay_dialog = KeyMarkersDialog()
 
-if __name__ == "__main__":
-    try:
-        KeyMarkersDialog.delete_overlays() # pylint: disable=E0601
-    except:
-        pass
 
-
-class KeyMarkersDialog(QtWidgets.QDialog):
-
-    WINDOW_TITLE = "Timeline Overlay"
+class KeyMarkersDialog(object):
 
     timeline_overlay = None
 
     @classmethod
     def delete_overlays(cls):
         if KeyMarkersDialog.timeline_overlay:
-            KeyMarkersDialog.timeline_overlay.setParent(None)
-            KeyMarkersDialog.timeline_overlay.deleteLater()
             KeyMarkersDialog.timeline_overlay = None
 
-    def __init__(self, parent=maya_main_window()):
-        super(KeyMarkersDialog, self).__init__(parent)
-
-        self.setWindowTitle(self.WINDOW_TITLE)
-        if cmds.about(ntOS=True):
-            self.setWindowFlags(self.windowFlags() ^ QtCore.Qt.WindowContextHelpButtonHint)
-        elif cmds.about(macOS=True):
-            self.setWindowFlags(QtCore.Qt.Tool)
-
-        self.setMinimumSize(280, 160)
-
-        self.create_widgets()
-        self.create_layout()
-        self.create_connections()
-
+    def __init__(self):
+        super(KeyMarkersDialog, self).__init__()
         self.set_overlay_visible(True)
-
-    def create_widgets(self):
-        self.overlay_visible_cb = QtWidgets.QCheckBox("Show Overlay")
-
-        self.context_menu_cb = QtWidgets.QCheckBox("Context Menu Enabled")
-        self.context_menu_cb.setChecked(True)
-
-        self.add_frame_btn = QtWidgets.QPushButton("Add Frame")
-        self.remove_frame_btn = QtWidgets.QPushButton("Remove Frame")
-
-        self.close_btn = QtWidgets.QPushButton("Close")
-
-    def create_layout(self):
-        frame_layout = QtWidgets.QHBoxLayout()
-        frame_layout.setSpacing(4)
-        frame_layout.addWidget(self.add_frame_btn)
-        frame_layout.addWidget(self.remove_frame_btn)
-        frame_layout.addStretch()
-
-        overlay_layout = QtWidgets.QVBoxLayout()
-        overlay_layout.addWidget(self.overlay_visible_cb)
-        overlay_layout.addWidget(self.context_menu_cb)
-        overlay_layout.addLayout(frame_layout)
-
-        options_grp = QtWidgets.QGroupBox("Overlay Options")
-        options_grp.setLayout(overlay_layout)
-
-        btn_layout = QtWidgets.QHBoxLayout()
-        btn_layout.addStretch()
-        btn_layout.addWidget(self.close_btn)
-
-        main_layout = QtWidgets.QVBoxLayout(self)
-        main_layout.setContentsMargins(2, 2, 2, 2)
-        main_layout.addWidget(options_grp)
-        main_layout.addStretch()
-        main_layout.addLayout(btn_layout)
-
-    def create_connections(self):
-        self.overlay_visible_cb.toggled.connect(self.set_overlay_visible)
-
-        self.close_btn.clicked.connect(self.close)
 
     def set_overlay_visible(self, visible):
         if visible:
             if not KeyMarkersDialog.timeline_overlay:
                 KeyMarkersDialog.timeline_overlay = KeyMarkers()
-                KeyMarkersDialog.timeline_overlay.set_context_menu_enabled(self.context_menu_cb.isChecked())
-
-                self.context_menu_cb.toggled.connect(KeyMarkersDialog.timeline_overlay.set_context_menu_enabled)
-                self.add_frame_btn.clicked.connect(KeyMarkersDialog.timeline_overlay.add_frame)
-                self.remove_frame_btn.clicked.connect(KeyMarkersDialog.timeline_overlay.remove_frame)
-
 
         if KeyMarkersDialog.timeline_overlay:
             KeyMarkersDialog.timeline_overlay.setVisible(visible)
-
-        self.overlay_visible_cb.setChecked(visible)
-
 
 
 if __name__ == "__main__":
@@ -242,4 +159,3 @@ if __name__ == "__main__":
         pass
 
     overlay_dialog = KeyMarkersDialog()
-    overlay_dialog.show()
