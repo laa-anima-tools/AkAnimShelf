@@ -18,7 +18,7 @@ import maya.OpenMayaUI as mui
 
 HEIGHT = 38
 WIDTH = 360
-HEIGHT_OFFSET = 112
+HEIGHT_OFFSET = 90
 WIDTH_OFFSET = 378
 
 
@@ -36,8 +36,7 @@ class InfoUtils(wdg.QDialog):
         y_pos = parent.y() + HEIGHT_OFFSET
 
         # DIALOG PREFERENCES
-        self.setWindowFlags(
-            core.Qt.FramelessWindowHint | core.Qt.Dialog | core.Qt.CustomizeWindowHint | core.Qt.FramelessWindowHint)
+        self.setWindowFlags(core.Qt.FramelessWindowHint)
         self.setFixedSize(WIDTH, HEIGHT)
         self.setGeometry(core.QRect(x_pos, y_pos, parent.width(), parent.height()))
         self.setStyleSheet('background-color: #333333;')

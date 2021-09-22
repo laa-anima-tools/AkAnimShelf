@@ -28,7 +28,6 @@ except:
     from PySide.QtCore import SIGNAL, Qt, QPointF, QTimer, QSize, QLocale, QSettings, QPoint, QRect
     from PySide.QtGui import QWidget, QAction, QIcon, QColor, QApplication, QPixmap, QToolButton, QLineEdit, QImage, QDesktopServices, QGridLayout, QCheckBox, QListWidgetItem, QSizePolicy
 
-from AkAnimShelf.Src.Dock.WorkspaceControl import WorkspaceControl
 from loadUiType import loadUiType
 from const import VERSION, MAP_FILE_FILTER, ButtonPosition, affixPrefix, WaitState, warn, error, question, getTypeString, decodeCommandStr, encodeIconStr, decodeIconStr, encodeLabelStr, decodeLabelStr, encodeGroupCommandStr, decodeGroupCommandStr, encodeCommandStr, encodeVisToggleNodeStr, decodeVisToggleNodeStr, encodeVisToggleChannelStr, decodeVisToggleChannelStr, encodeVisToggleColorStr, decodeVisToggleColorStr, MASTER_WINDOW_NAME, USER_WINDOW_NAME, splitCapitalized, getAbsolutePath
 from dropItem import DragPoseDropItem, AbstractDropItem
@@ -131,7 +130,6 @@ class LocusPickerLauncherUI(base_class, form_class):
     __window__ = None
 
     def __init__(self, parent = PLATFORM_PARENT, objName = USER_WINDOW_NAME):
-        print('======== {0} ========'.format(USER_WINDOW_NAME))
         super(base_class, self).__init__(parent)
         self.setupUi(self)
         self.setObjectName(objName)
@@ -151,7 +149,6 @@ class LocusPickerLauncherUI(base_class, form_class):
         self.__selectGuideDialog = None
         self.__callbacks = []
         self.setupUiEnv()
-        self.create_workspace_control()
         return
 
     @property
@@ -1350,16 +1347,6 @@ class LocusPickerLauncherUI(base_class, form_class):
             for x in items:
                 x.setIgnore(False)
 
-    def create_workspace_control(self):
-        self.workspace_control_instance = WorkspaceControl(self.get_workspace_control_name())
-        if self.workspace_control_instance.exists():
-            self.workspace_control_instance.restore(self)
-        else:
-            self.workspace_control_instance.create(USER_WINDOW_NAME, self, ui_script="from AkAnimShelf.Src._3rdPart.LocusPicker.locusPickerLauncherUI import LocusPickerLauncherUI\nLocusPickerLauncherUI.showPicker2()")
-
-    def show_workspace_control(self):
-        self.workspace_control_instance.set_visible(True)
-
     @classmethod
     def setWindowObj(cls, window):
         cls.__window__ = window
@@ -1380,35 +1367,6 @@ class LocusPickerLauncherUI(base_class, form_class):
         else:
             cls.__window__ = cls(PLATFORM_PARENT)
             cls.__window__.show()
-
-    @classmethod
-    def showPicker2(cls):
-
-        workspace_control_name = LocusPickerLauncherUI.get_workspace_control_name()
-        print('======== {0} ========'.format(workspace_control_name))
-        print('======== {0} ========'.format(MASTER_WINDOW_NAME))
-        print('======== {0} ========'.format(USER_WINDOW_NAME))
-        if mc.window(workspace_control_name, exists=True):
-            mc.deleteUI(workspace_control_name)
-
-        if mc.window(MASTER_WINDOW_NAME, q=1, ex=1):
-            mc.deleteUI(MASTER_WINDOW_NAME)
-        if cls.__window__:
-            cls.__window__.show_workspace_control()
-            if cls.__window__.isMinimized():
-                cls.__window__.showNormal()
-            else:
-                cls.__window__.raise_()
-        else:
-            cls.__window__ = cls(PLATFORM_PARENT)
-            cls.__window__.show()
-
-    @classmethod
-    def get_workspace_control_name(cls):
-        print('get')
-        return "{0}WorkspaceControl".format(MASTER_WINDOW_NAME)
-
-
 
     @sceneExists
     def selectCurrentAllItems(self, scene = None):

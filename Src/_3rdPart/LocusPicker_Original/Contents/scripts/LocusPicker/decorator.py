@@ -65,8 +65,7 @@ def accepts(*types, **kw):
                 if debug is 0:
                     return f(*args)
                 args = list(args)
-                raise Exception(len(args[1:])) == len(types) or AssertionError
-
+                raise len(args[1:]) == len(types) or AssertionError
                 argtypes = tuple(map(type, args[1:]))
                 if argtypes != types:
                     msg = info(f.__name__, types, argtypes, 0)

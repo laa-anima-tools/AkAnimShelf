@@ -1,0 +1,22 @@
+global proc LocusPicker_load() {
+	string $item ="resources_rc.pyc";
+	
+	// Load the Plugin
+	if ( !`pluginInfo -query -loaded $item` )
+		loadPlugin -quiet $item;
+	
+}
+// If the module uses a Python script and if are loaded at runtime, Maya does not update the Python path
+// so we need to update it ourself - as Maya may call rbfSolver.py right after us
+{
+	string $me =`moduleInfo -p -mn "LocusPicker"` ;
+	$me +="/scripts" ;
+	python ("import sys") ;
+	string $py[] =python ("sys.path") ;
+	if ( stringArrayCount ($me, $py) == 0 )
+		python ("sys.path.insert(0, '" + $me + "')") ;
+}
+
+// We could eventually copy the shelf_LOCUS_TOOLS.mel code here, but 
+// future version of Maya may load this for us automatically
+LOCUSTOOLS_shelf;

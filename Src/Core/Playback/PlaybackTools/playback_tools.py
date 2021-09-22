@@ -198,7 +198,7 @@ class PlaybackTools(object):
     # ============================================================================= #
     # NEXT KEY                                                                      #
     # ============================================================================= #
-    def next_key(self):
+    def go_to_the_next_key(self):
         cmd.undoInfo(state=False)
         next_key = cmd.findKeyframe(timeSlider=True, which="next")
         self._playback_utils.set_current_time(next_key)
@@ -207,7 +207,7 @@ class PlaybackTools(object):
     # ============================================================================= #
     # PREV KEY                                                                      #
     # ============================================================================= #
-    def prev_key(self):
+    def go_to_the_prev_key(self):
         cmd.undoInfo(state=False)
         prev_key = cmd.findKeyframe(timeSlider=True, which="previous")
         self._playback_utils.set_current_time(prev_key)

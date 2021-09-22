@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage SchemaVersion="1.0"
+    ProductType="Application"
+    AutodeskProduct="Maya"
+    Name="LocusPicker"
+    Description="LocusPicker"
+    AppVersion="1.1.35"
+    Author="http://www.locus.com/"
+	AppNameSpace="appstore.exchange.autodesk.com"
+    HelpFile="./Contents/docs/index.html"
+    OnlineDocumentation="http://www.locus.com/?lang=en"
+    ProductCode="*"
+    UpgradeCode="{730ADD45-75E5-402D-8EF4-254A004D6DBE}" >
+     
+    <CompanyDetails Name="LOCUS"
+        Phone=""
+        Url="http://www.locus.com/?lang=en"
+        Email="support@locus.com" />
+ 
+    <!-- Prevent to load in earlier version than Maya 2014 -->
+	 <RuntimeRequirements SupportPath="./Contents/docs" OS="win64" Platform="Maya" SeriesMin="2014"  />
+    <Components>
+        <RuntimeRequirements SupportPath="./Contents/docs" OS="win64" Platform="Maya" SeriesMin="2014" SeriesMax="2018"/>
+        <MayaEnv expr="MAYA_SCRIPT_PATH+:=shelves" />
+        <ComponentEntry ModuleName="./Contents/icons/LocusPicker.png" />
+        <ComponentEntry ModuleName="./Contents/shelves/LOCUSTOOLS_shelf.mel" />
+		<ComponentEntry ModuleName="./Contents/scripts/LocusPicker_load.mel" />
+	</Components>
+</ApplicationPackage>

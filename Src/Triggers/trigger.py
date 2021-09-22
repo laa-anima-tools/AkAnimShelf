@@ -17,8 +17,9 @@ AUTHOR:   Leandro Adeodato
 VERSION:  v1.0.0 | Maya 2022 | Python 3
 =============================================================================
 """
-from PySide2 import QtCore as cor
 import maya.cmds as cmd
+from PySide2 import QtCore as cor
+from PySide2 import QtWidgets as wdg
 
 # from AkAnimShelf.Src.Core.Common import common_tools as cmt; reload(cmt)
 # from AkAnimShelf.Src.Core.Keyframing import timeline_tools as tmt; reload(tmt)
@@ -28,15 +29,16 @@ import maya.cmds as cmd
 from AkAnimShelf.Src.Core.Playback.PlaybackTools import playback_tools as pbt; reload(pbt)
 from AkAnimShelf.Src.Core.Playback.KeyMarkers import key_markers as kmk; reload(kmk)
 from AkAnimShelf.Src.Core.Keyframing.GraphEditor import graph_editor as grp; reload(grp)
+from AkAnimShelf.Src.Core.Navigation import transform_modes as trs; reload(trs)
 from AkAnimShelf.Src.Utils import info_utils as info; reload(info)
 from AkAnimShelf.Src.Data import user_data as data; reload(data)
+
 
 MOVE, ROTATE, SCALE = 'Move', 'Rotate', 'Scale'
 MODIFIER = 'Control', 'Alt', 'Shift'
 BASE_LAYER, DEFAULT_LAYER = 'BaseAnimation', 'layer001'
 NONE, CTRL, ALT, SHIFT = 0, 1, 2, 3
 RED, GREEN, BLUE, YELLOW, PINK, ORANGE = 12, 18, 17, 21, 19, 20
-
 
 class Trigger(cor.QObject):
     info_sent = cor.Signal(str)
@@ -57,9 +59,40 @@ class Trigger(cor.QObject):
         self._playback_tools = pbt.PlaybackTools()
         self._key_markers = kmk.KeyMarkers()
         self._graph_editor = grp.GraphEditor()
+        self._transform_modes = trs.TransformModes()
 
         self._selected_channels = []
         self._colors = [RED, GREEN, BLUE, YELLOW, PINK, ORANGE]
+
+    def supress_script_editor_info(self, state=True):
+        cmd.scriptEditorInfo(suppressInfo=state, suppressErros=state, suppressWarnings=state)
+
+    # =========================================================================
+    # TOGGLE MOVE MODE
+    # =========================================================================
+    def toggle_move_mode(self):
+        self.supress_script_editor_info(True)
+        current_mode = self._transform_modes.toggle_move_mode()
+        info.show_message('Move Mode: {0}'.format(current_mode))
+        self.supress_script_editor_info(False)
+
+    # =========================================================================
+    # TOGGLE ROTATE MODE
+    # =========================================================================
+    def toggle_rotate_mode(self):
+        self.supress_script_editor_info(True)
+        current_mode = self._transform_modes.toggle_rotate_mode()
+        info.show_message('Rotate Mode: {0}'.format(current_mode))
+        self.supress_script_editor_info(False)
+
+    # =========================================================================
+    # TOGGLE ROTATE MODE
+    # =========================================================================
+    def toggle_scale_mode(self):
+        self.supress_script_editor_info(True)
+        current_mode = self._transform_modes.toggle_scale_mode()
+        info.show_message('Scale Mode: {0}'.format(current_mode))
+        self.supress_script_editor_info(False)
 
     # ============================================================================= #
     # SLICE CURVES                                                                  #
@@ -363,11 +396,41 @@ class Trigger(cor.QObject):
         key_markers = kmk.KeyMarkers()
         self._key_markers.add_frame()
 
+    # =========================================================================
+    # GO TO THE NEXT FRAME
+    # =========================================================================
     def go_to_the_next_frame(self, modifier=None):
+        self.supress_script_editor_info(True)
         self._playback_tools.go_to_the_next_frame()
+        info.show_message('Next Frame >>')
+        self.supress_script_editor_info(False)
 
+    # =========================================================================
+    # GO TO THE PREV FRAME
+    # =========================================================================
     def go_to_the_prev_frame(self, modifier=None):
+        self.supress_script_editor_info(True)
         self._playback_tools.go_to_the_prev_frame()
+        info.show_message('<< Previous Frame')
+        self.supress_script_editor_info(False)
+
+    # =========================================================================
+    # GO TO THE NEXT KEY
+    # =========================================================================
+    def go_to_the_next_key(self, modifier=None):
+        self.supress_script_editor_info(True)
+        self._playback_tools.go_to_the_next_key()
+        info.show_message('Next Key >>')
+        self.supress_script_editor_info(False)
+
+    # =========================================================================
+    # GO TO THE PREV FRAME
+    # =========================================================================
+    def go_to_the_prev_key(self, modifier=None):
+        self.supress_script_editor_info(True)
+        self._playback_tools.go_to_the_prev_key()
+        info.show_message('<< Previous Key')
+        self.supress_script_editor_info(False)
 
     def next_frame_playback_press(self, modifier=None):
         self._playback_tools.next_frame_playback_press()
@@ -381,28 +444,16 @@ class Trigger(cor.QObject):
     def prev_frame_playback_release(self, modifier=None):
         self._playback_tools.prev_frame_playback_release()
 
-    def prev_frame(self, modifier=None):
-        print('prev_frame')
-
     def playback(self, modifier=None):
         print('playback')
 
     def play(self, modifier=None):
         print('play')
 
-    def next_frame(self, modifier=None):
-        print('next_frame')
-
     def start_frame(self, modifier=None):
         print('start_frame')
 
-    def prev_key(self, modifier=None):
-        print('prev_key')
-        self._playback_tools.prev_key()
 
-    def next_key(self, modifier=None):
-        print('next_key')
-        self._playback_tools.next_key()
 
     def add_timeline_marker(self, marker):
         print('add_timeline_marker')

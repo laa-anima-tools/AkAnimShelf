@@ -1,0 +1,2582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>431</width>
+    <height>329</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Additional Tool Box</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QRadioButton
+{
+	spacing:2px;
+}
+QRadioButton::indicator
+{
+	width:14px;
+	height:14px;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="margin">
+    <number>1</number>
+   </property>
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="template_tab">
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <attribute name="title">
+       <string>Vector Maps</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="template_Layout">
+       <property name="spacing">
+        <number>1</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="templateDirPath_layout">
+         <property name="spacing">
+          <number>1</number>
+         </property>
+         <property name="leftMargin">
+          <number>6</number>
+         </property>
+         <property name="topMargin">
+          <number>6</number>
+         </property>
+         <property name="rightMargin">
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="templateDir_label">
+           <property name="text">
+            <string>Directory :</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="templateDir_lineEdit">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="toolTip">
+            <string>To show the list of template directory, click it</string>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="templateDirBrowse_Button">
+           <property name="minimumSize">
+            <size>
+             <width>48</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>48</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="toolTip">
+            <string>Browse a new template directory</string>
+           </property>
+           <property name="text">
+            <string>Browse</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="spacing">
+          <number>1</number>
+         </property>
+         <item>
+          <widget class="QToolButton" name="templateDir_button">
+           <property name="minimumSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Toggle Template Directory List:
+Click this to show / hide Templete Directory List</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resources.qrc">
+             <normaloff>:/list</normaloff>:/list</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="addTemplateDir_button">
+           <property name="minimumSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Add Template Directory:
+Click and browse template directory</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>:/addFolder</normaloff>:/addFolder</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="addTemplateSVGFile_button">
+           <property name="minimumSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Add SVG File:
+Click and browse SVG Files</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>:/addSVGFile</normaloff>:/addSVGFile</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="zoomIn_Button">
+           <property name="minimumSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Increase icon size</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resources.qrc">
+             <normaloff>:/zoomIn</normaloff>
+             <disabledoff>:/zoomIn_disabled</disabledoff>:/zoomIn</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="zoomOut_Button">
+           <property name="minimumSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Decrease icon size</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resources.qrc">
+             <normaloff>:/zoomOut</normaloff>
+             <disabledoff>:/zoomOut_disabled</disabledoff>:/zoomOut</iconset>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="sliderButton_tab">
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <attribute name="title">
+       <string>Create</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <property name="spacing">
+        <number>3</number>
+       </property>
+       <property name="margin">
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QWidget" name="buttonType_widget" native="true">
+         <property name="toolTip">
+          <string>Select a button command type</string>
+         </property>
+         <layout class="QHBoxLayout" name="buttonType_Layout">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <property name="margin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_12">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Button Type : </string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="select_radioButton">
+            <property name="text">
+             <string>Select</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="key_radioButton">
+            <property name="text">
+             <string>Key</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="reset_radioButton">
+            <property name="text">
+             <string>Reset</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="toggle_radioButton">
+            <property name="text">
+             <string>Toggle</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="range_radioButton">
+            <property name="text">
+             <string>Range</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="pose_radioButton">
+            <property name="text">
+             <string>Pose</string>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_8">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>18</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="sliderWidth_widget" native="true">
+         <property name="toolTip">
+          <string>Set width of the button</string>
+         </property>
+         <layout class="QHBoxLayout" name="sliderWidth_layout">
+          <property name="spacing">
+           <number>3</number>
+          </property>
+          <property name="margin">
+           <number>0</number>
+          </property>
+          <item>
+           <spacer name="horizontalSpacer_9">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_8">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Width : </string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="sliderWidth_slider">
+            <property name="minimumSize">
+             <size>
+              <width>240</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>240</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="minimum">
+             <number>10</number>
+            </property>
+            <property name="maximum">
+             <number>120</number>
+            </property>
+            <property name="value">
+             <number>20</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="sliderWidth_spinBox">
+            <property name="keyboardTracking">
+             <bool>false</bool>
+            </property>
+            <property name="minimum">
+             <number>10</number>
+            </property>
+            <property name="maximum">
+             <number>400</number>
+            </property>
+            <property name="value">
+             <number>20</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_14">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="sliderHeight_widget" native="true">
+         <property name="toolTip">
+          <string>Set height of the button</string>
+         </property>
+         <layout class="QHBoxLayout" name="sliderHeight_layout">
+          <property name="spacing">
+           <number>3</number>
+          </property>
+          <property name="margin">
+           <number>0</number>
+          </property>
+          <item>
+           <spacer name="horizontalSpacer_10">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_9">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Height : </string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="sliderHeight_slider">
+            <property name="minimumSize">
+             <size>
+              <width>240</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>240</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="minimum">
+             <number>10</number>
+            </property>
+            <property name="maximum">
+             <number>120</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="sliderHeight_spinBox">
+            <property name="keyboardTracking">
+             <bool>false</bool>
+            </property>
+            <property name="minimum">
+             <number>10</number>
+            </property>
+            <property name="maximum">
+             <number>400</number>
+            </property>
+            <property name="value">
+             <number>20</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_15">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="sliderColor_widget" native="true">
+         <layout class="QHBoxLayout" name="sliderColor_layout">
+          <property name="spacing">
+           <number>3</number>
+          </property>
+          <property name="margin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_13">
+            <property name="minimumSize">
+             <size>
+              <width>80</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Color : </string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="sliderColor_button">
+            <property name="minimumSize">
+             <size>
+              <width>36</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>36</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="toolTip">
+             <string>To change color, click this.
+If click with holding Ctrl, can use predefined palette.</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="showPalette_Button">
+            <property name="minimumSize">
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="toolTip">
+             <string>To change color using swatch palette, click this.</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/swatch</normaloff>:/swatch</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_11">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="changeTool_widget" native="true">
+         <property name="toolTip">
+          <string>To affix additional manipulator, select a radio button.</string>
+         </property>
+         <layout class="QHBoxLayout" name="changeTool_layout">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <property name="margin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_16">
+            <property name="minimumSize">
+             <size>
+              <width>92</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>92</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Set tool to</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="noChange_radioButton">
+            <property name="text">
+             <string>No Change</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="moveTool_radioButton">
+            <property name="text">
+             <string>Move tool</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="rotateTool_radioButton">
+            <property name="text">
+             <string>Rotate tool</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="scaleTool_radioButton">
+            <property name="text">
+             <string>Scale tool</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="attributeOption_widget" native="true">
+         <property name="toolTip">
+          <string>To define attributes when create button, select a radio button.</string>
+         </property>
+         <layout class="QHBoxLayout" name="attributeOption_layout">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <property name="margin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_17">
+            <property name="minimumSize">
+             <size>
+              <width>92</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>92</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Attribute option</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="allKeyable_radioButton">
+            <property name="text">
+             <string>All Keyable</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="transformOnly_radioButton">
+            <property name="text">
+             <string>Transform only</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="selectedOnly_radioButton">
+            <property name="text">
+             <string>Selected only</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_12">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="numberOfButtons_widget" native="true">
+         <property name="toolTip">
+          <string>To create against multiple target, select a radio button.</string>
+         </property>
+         <layout class="QHBoxLayout" name="numberOfButtons_layout">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <property name="margin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_18">
+            <property name="minimumSize">
+             <size>
+              <width>92</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>92</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Multi members to</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="one_radioButton">
+            <property name="text">
+             <string>One</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="multiHorizontal_radioButton">
+            <property name="text">
+             <string>Multi Horizontal</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="multiVertical_radioButton">
+            <property name="text">
+             <string>Multi Vertical</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="capture_radioButton">
+            <property name="text">
+             <string>Capture</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_13">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="sliderAttach_widget" native="true">
+         <property name="toolTip">
+          <string>To set slider position in button, select a radio button.</string>
+         </property>
+         <layout class="QHBoxLayout" name="sliderAttach_layout">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <property name="margin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_10">
+            <property name="minimumSize">
+             <size>
+              <width>92</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>92</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Slider Position</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="attachNo_radioButton">
+            <property name="text">
+             <string>No</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="attachToTop_radioButton">
+            <property name="text">
+             <string>Top</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="attachToBottom_radioButton">
+            <property name="text">
+             <string>Bottom</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="attachToLeft_radioButton">
+            <property name="text">
+             <string>Left</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="attachToRight_radioButton">
+            <property name="text">
+             <string>Right</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>38</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="sliderDirection_widget" native="true">
+         <property name="toolTip">
+          <string>To change slider behavior direction, select a radio button.</string>
+         </property>
+         <layout class="QHBoxLayout" name="sliderDirection_layout">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <property name="margin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_11">
+            <property name="minimumSize">
+             <size>
+              <width>92</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>92</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Slider Direction</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="verticalSliderDirection_widget" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_11">
+             <property name="margin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QRadioButton" name="zeroToBottom_radioButton">
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_14">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Zero&lt;br/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;↓&lt;/span&gt;&lt;br/&gt;Max&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="topToZero_radioButton"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_15">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Max&lt;br/&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;↑&lt;/span&gt;&lt;br/&gt;Zero&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="horizontalSliderDirection_widget" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_13">
+             <property name="margin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QRadioButton" name="zeroToRight_radioButton">
+               <property name="text">
+                <string>Zero → Max</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="leftToZero_radioButton">
+               <property name="text">
+                <string>Max ← Zero</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="sliderPreview_container">
+         <property name="title">
+          <string>Preview</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+         <layout class="QHBoxLayout" name="sliderPreview_layout">
+          <property name="margin">
+           <number>3</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="sliderPreview_widget">
+            <property name="minimumSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>To create button as shown, drag and drop onto map.</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>125</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+      <zorder>buttonType_widget</zorder>
+      <zorder>sliderWidth_widget</zorder>
+      <zorder>sliderHeight_widget</zorder>
+      <zorder>sliderColor_widget</zorder>
+      <zorder>sliderAttach_widget</zorder>
+      <zorder>sliderDirection_widget</zorder>
+      <zorder>verticalSpacer_3</zorder>
+      <zorder>sliderPreview_container</zorder>
+      <zorder>changeTool_widget</zorder>
+      <zorder>attributeOption_widget</zorder>
+      <zorder>numberOfButtons_widget</zorder>
+     </widget>
+     <widget class="QWidget" name="geoMap_tab">
+      <attribute name="title">
+       <string>Modify</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QScrollArea" name="geoMap_scrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="geoMap_scrollContentWidget">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>404</width>
+            <height>381</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <property name="spacing">
+            <number>2</number>
+           </property>
+           <property name="margin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QWidget" name="container_widget" native="true">
+             <layout class="QVBoxLayout" name="container_layout">
+              <property name="margin">
+               <number>6</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_2">
+                <property name="font">
+                 <font>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Geometry ↔ Button Map Conversion</string>
+                </property>
+                <property name="indent">
+                 <number>8</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_8">
+                <property name="spacing">
+                 <number>1</number>
+                </property>
+                <item>
+                 <widget class="QToolButton" name="mapToGeo_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>90</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>90</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Converts the current map to geometries.</string>
+                  </property>
+                  <property name="text">
+                   <string>Map &gt; Geo</string>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="geoToMap_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>90</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>90</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Converts geometries back to the current map.</string>
+                  </property>
+                  <property name="text">
+                   <string>Geo &gt; Map</string>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="deleteAll_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>90</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>90</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Removes all converted geometries.</string>
+                  </property>
+                  <property name="text">
+                   <string>Delete All</string>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="Line" name="line">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="gridLayout_2">
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <item row="1" column="7">
+                 <widget class="QToolButton" name="alignVertical_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Aligns positions of the selected buttons vertically</string>
+                  </property>
+                  <property name="text">
+                   <string>Ver</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/alignHCenter</normaloff>:/alignHCenter</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="6">
+                 <widget class="QToolButton" name="alignHorizontal_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Aligns positions of the selected buttons horizontally</string>
+                  </property>
+                  <property name="text">
+                   <string>Hor</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/alignVCenter</normaloff>:/alignVCenter</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QToolButton" name="alignLeft_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Aligns the selected buttons to left</string>
+                  </property>
+                  <property name="text">
+                   <string>Left</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/alignLeft</normaloff>:/alignLeft</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QToolButton" name="alignRight_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Aligns the selected buttons to right</string>
+                  </property>
+                  <property name="text">
+                   <string>Right</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/alignRight</normaloff>:/alignRight</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QToolButton" name="alignTop_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Aligns the selected buttons to top</string>
+                  </property>
+                  <property name="text">
+                   <string>Top</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/alignTop</normaloff>:/alignTop</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="4">
+                 <widget class="QToolButton" name="alignBottom_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Aligns the selected buttons to bottom</string>
+                  </property>
+                  <property name="text">
+                   <string>Bottom</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/alignBottom</normaloff>:/alignBottom</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="8">
+                 <widget class="QLabel" name="label_3">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Align Buttons</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QWidget" name="widget_3" native="true">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>3</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>3</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="5">
+                 <widget class="QWidget" name="widget_4" native="true">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>3</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>3</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="Line" name="line_4">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="gridLayout_3">
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <item row="1" column="6">
+                 <widget class="QToolButton" name="moveToHCenter_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Move the selected buttons to horizontal center of the map.</string>
+                  </property>
+                  <property name="text">
+                   <string>Hor</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/moveHCenter</normaloff>:/moveHCenter</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="7">
+                 <widget class="QToolButton" name="moveToVCenter_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Move the selected buttons to vertical center of the map.</string>
+                  </property>
+                  <property name="text">
+                   <string>Ver</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/moveVCenter</normaloff>:/moveVCenter</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QWidget" name="widget_7" native="true">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>3</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>3</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QToolButton" name="sendToBackward_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Send selected buttons backward</string>
+                  </property>
+                  <property name="text">
+                   <string>BKWD</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/sendBackward</normaloff>:/sendBackward</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="4">
+                 <widget class="QToolButton" name="sendBack_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Send selected buttons to back</string>
+                  </property>
+                  <property name="text">
+                   <string>Back</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/sendBack</normaloff>:/sendBack</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QToolButton" name="bringToForward_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Bring selected buttons forward</string>
+                  </property>
+                  <property name="text">
+                   <string>FWD</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/bringForward</normaloff>:/bringForward</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QToolButton" name="bringFront_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Bring selected buttons to front</string>
+                  </property>
+                  <property name="text">
+                   <string>Front</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/bringFront</normaloff>:/bringFront</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="5">
+                 <widget class="QLabel" name="label_19">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Arrange Buttons</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="5" rowspan="2">
+                 <widget class="Line" name="line_6">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="6" colspan="2">
+                 <widget class="QLabel" name="label_20">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Center</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="Line" name="line_3">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QGridLayout" name="gridLayout">
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <property name="spacing">
+                 <number>2</number>
+                </property>
+                <item row="1" column="1">
+                 <widget class="QToolButton" name="averageHeight_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Computes and sets the average height of the selected buttons</string>
+                  </property>
+                  <property name="text">
+                   <string>Height</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/avgHeight</normaloff>:/avgHeight</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QToolButton" name="averageWidth_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Computes and sets the average width of the selected buttons</string>
+                  </property>
+                  <property name="text">
+                   <string>Width</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/avgWidth</normaloff>:/avgWidth</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QToolButton" name="averageGapX_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Computes and sets the average gap distance of the selected buttons horizontally</string>
+                  </property>
+                  <property name="text">
+                   <string>XGap</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/avgGapX</normaloff>:/avgGapX</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="3" colspan="2">
+                 <widget class="QLabel" name="label_5">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Average Gap</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="2">
+                 <widget class="QLabel" name="label_4">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Average Size</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="4">
+                 <widget class="QToolButton" name="averageGapY_Button">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>42</height>
+                   </size>
+                  </property>
+                  <property name="toolTip">
+                   <string>Computes and sets the average gap distance of the selected buttons vertically</string>
+                  </property>
+                  <property name="text">
+                   <string>YGap</string>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/avgGapY</normaloff>:/avgGapY</iconset>
+                  </property>
+                  <property name="toolButtonStyle">
+                   <enum>Qt::ToolButtonTextUnderIcon</enum>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="6">
+                 <widget class="QWidget" name="widget_2" native="true">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="5">
+                 <widget class="QWidget" name="widget" native="true">
+                  <property name="minimumSize">
+                   <size>
+                    <width>42</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>42</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2" rowspan="2">
+                 <widget class="Line" name="line_2">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="Line" name="line_5">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <property name="spacing">
+                 <number>1</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_6">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Mirror Buttons</string>
+                  </property>
+                  <property name="indent">
+                   <number>6</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_6">
+                  <property name="leftMargin">
+                   <number>9</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>6</number>
+                  </property>
+                  <item>
+                   <widget class="QCheckBox" name="changeMirroredColor_checkBox">
+                    <property name="text">
+                     <string>Change colors to mirrored buttons</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_12">
+                  <property name="spacing">
+                   <number>2</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>9</number>
+                  </property>
+                  <item>
+                   <widget class="QLabel" name="label_7">
+                    <property name="text">
+                     <string>Replace</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="replace_lineEdit1">
+                    <property name="minimumSize">
+                     <size>
+                      <width>25</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>25</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>_l_</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QToolButton" name="fromTo_Button">
+                    <property name="minimumSize">
+                     <size>
+                      <width>21</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>21</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="toolTip">
+                     <string>Revert the direction of replacement</string>
+                    </property>
+                    <property name="text">
+                     <string>&gt;&gt;</string>
+                    </property>
+                    <property name="autoRaise">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLineEdit" name="replace_lineEdit2">
+                    <property name="minimumSize">
+                     <size>
+                      <width>25</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>25</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>_r_</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QToolButton" name="mirror_Button">
+                    <property name="minimumSize">
+                     <size>
+                      <width>28</width>
+                      <height>28</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>28</width>
+                      <height>28</height>
+                     </size>
+                    </property>
+                    <property name="toolTip">
+                     <string>Mirror selected buttons.</string>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="resources.qrc">
+                      <normaloff>:/mirror</normaloff>:/mirror</iconset>
+                    </property>
+                    <property name="iconSize">
+                     <size>
+                      <width>24</width>
+                      <height>24</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_2">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>108</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Expanding</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>9999999</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="color_tab">
+      <attribute name="title">
+       <string>Color</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QScrollArea" name="color_scrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="color_scrollContentWidget">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>421</width>
+            <height>300</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <property name="margin">
+            <number>6</number>
+           </property>
+           <item>
+            <layout class="QHBoxLayout" name="customColor_Layout">
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Custom Color (click to change):</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="customColor_button">
+               <property name="toolTip">
+                <string>To change color, click this.
+Then drag and drop onto map or a button.</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>224</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="image_tab">
+      <attribute name="title">
+       <string>Image</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QScrollArea" name="image_scrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="command_tab">
+      <attribute name="title">
+       <string>Command</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QScrollArea" name="command_scrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="label_tab">
+      <attribute name="title">
+       <string>Label</string>
+      </attribute>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QScrollArea" name="label_scrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>alignLeft_Button</tabstop>
+  <tabstop>alignRight_Button</tabstop>
+  <tabstop>alignTop_Button</tabstop>
+  <tabstop>alignBottom_Button</tabstop>
+  <tabstop>alignHorizontal_Button</tabstop>
+  <tabstop>alignVertical_Button</tabstop>
+  <tabstop>bringFront_Button</tabstop>
+  <tabstop>bringToForward_Button</tabstop>
+  <tabstop>sendToBackward_Button</tabstop>
+  <tabstop>sendBack_Button</tabstop>
+  <tabstop>averageWidth_Button</tabstop>
+  <tabstop>averageHeight_Button</tabstop>
+  <tabstop>averageGapX_Button</tabstop>
+  <tabstop>averageGapY_Button</tabstop>
+  <tabstop>changeMirroredColor_checkBox</tabstop>
+  <tabstop>replace_lineEdit1</tabstop>
+  <tabstop>fromTo_Button</tabstop>
+  <tabstop>replace_lineEdit2</tabstop>
+  <tabstop>mirror_Button</tabstop>
+  <tabstop>multiHorizontal_radioButton</tabstop>
+  <tabstop>multiVertical_radioButton</tabstop>
+  <tabstop>templateDir_button</tabstop>
+  <tabstop>addTemplateDir_button</tabstop>
+  <tabstop>addTemplateSVGFile_button</tabstop>
+  <tabstop>zoomIn_Button</tabstop>
+  <tabstop>zoomOut_Button</tabstop>
+  <tabstop>capture_radioButton</tabstop>
+  <tabstop>attachToTop_radioButton</tabstop>
+  <tabstop>attachToBottom_radioButton</tabstop>
+  <tabstop>attachToLeft_radioButton</tabstop>
+  <tabstop>attachToRight_radioButton</tabstop>
+  <tabstop>zeroToBottom_radioButton</tabstop>
+  <tabstop>topToZero_radioButton</tabstop>
+  <tabstop>zeroToRight_radioButton</tabstop>
+  <tabstop>leftToZero_radioButton</tabstop>
+  <tabstop>geoMap_scrollArea</tabstop>
+  <tabstop>mapToGeo_Button</tabstop>
+  <tabstop>geoToMap_Button</tabstop>
+  <tabstop>deleteAll_Button</tabstop>
+  <tabstop>allKeyable_radioButton</tabstop>
+  <tabstop>scaleTool_radioButton</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>transformOnly_radioButton</tabstop>
+  <tabstop>selectedOnly_radioButton</tabstop>
+  <tabstop>one_radioButton</tabstop>
+  <tabstop>reset_radioButton</tabstop>
+  <tabstop>toggle_radioButton</tabstop>
+  <tabstop>key_radioButton</tabstop>
+  <tabstop>select_radioButton</tabstop>
+  <tabstop>pose_radioButton</tabstop>
+  <tabstop>sliderWidth_slider</tabstop>
+  <tabstop>sliderWidth_spinBox</tabstop>
+  <tabstop>sliderHeight_spinBox</tabstop>
+  <tabstop>noChange_radioButton</tabstop>
+  <tabstop>moveTool_radioButton</tabstop>
+  <tabstop>rotateTool_radioButton</tabstop>
+  <tabstop>color_scrollArea</tabstop>
+  <tabstop>customColor_button</tabstop>
+  <tabstop>image_scrollArea</tabstop>
+  <tabstop>command_scrollArea</tabstop>
+  <tabstop>label_scrollArea</tabstop>
+  <tabstop>sliderHeight_slider</tabstop>
+ </tabstops>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>sliderWidth_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sliderWidth_spinBox</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>242</x>
+     <y>65</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>379</x>
+     <y>70</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sliderWidth_spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sliderWidth_slider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>379</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>334</x>
+     <y>69</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sliderHeight_slider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sliderHeight_spinBox</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>334</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>379</x>
+     <y>93</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sliderHeight_spinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>sliderHeight_slider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>379</x>
+     <y>93</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>334</x>
+     <y>92</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

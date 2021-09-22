@@ -1,0 +1,116 @@
+global proc LOCUSTOOLS_shelf () {
+    global string $gShelfTopLevel ;
+    // If once LocusPicker is installed, we set the optionVar "LOCUSTOOL_PICKER" to prevent installation process from the next time.
+    // If no "LOCUSTOOL_PICKER" optionVar exists, we install it and set "LOCUSTOOL_PICKER" optionVar.
+	
+        // Check if "Custom" sheft exists.
+        if ( !`shelfLayout -exists "LOCUS_TOOLS"` )
+        {
+            // If a deleted "Custom" shelf is found in the user shelf dir, revive the shelf.
+            string $shelfDir = `internalVar -userShelfDir`;
+            string $deletedCustom = $shelfDir + "shelf_LOCUS_TOOLS.mel.deleted";
+            if ( `file -q -ex $deletedCustom` )
+            {
+                sysFile $deletedCustom -rename ($shelfDir + "shelf_LOCUS_TOOLS.mel");
+                loadNewShelf ($shelfDir + "shelf_LOCUS_TOOLS.mel");
+				optionVar -rm "LOCUSTOOL_PICKER";
+
+				
+            }
+            // If no "shelf_Custom.mel.deleted" is found, create a new "Custom" shelf.  
+			
+            else
+            {
+                addNewShelfTab "LOCUS_TOOLS";
+				optionVar -rm "LOCUSTOOL_PICKER";
+				
+            }
+	
+        }
+	
+    float $pickerVersion = 0.0;
+    if ( `optionVar -exists "LOCUSTOOL_PICKER"` )   {
+        $pickerVersion = float(`optionVar -q "LOCUSTOOL_PICKER"`);
+    }
+	
+    if ( $pickerVersion < 2.0 )
+    {
+        string $shelfButtons[] = `shelfLayout -q -ca "LOCUS_TOOLS"`;
+        int $hasLocusPickerButton = 0;
+        for ($shelfButt in $shelfButtons) {
+            if ( `shelfButton -query -label $shelfButt` == "LOCUS Picker" ) {
+                $hasLocusPickerButton = 1;
+                break;
+            }
+        }
+        if ( !$hasLocusPickerButton ) {
+            shelfButton
+    		    -parent "LOCUS_TOOLS"
+                -enableCommandRepeat 1
+                -enable 1
+                -width 35
+                -height 35
+                -manage 1
+                -visible 1
+                -preventOverride 0
+                -annotation "Show LOCUS Picker UI" 
+                -enableBackground 0
+                -align "center" 
+                -label "LOCUS Picker" 
+                -labelOffset 0
+                -font "plainLabelFont" 
+                -overlayLabelColor 0.8 0.8 0.8 
+                -overlayLabelBackColor 0 0 0 0.2 
+                -image "LocusPicker.png" 
+                -image1 "LocusPicker.png" 
+                -style "iconOnly" 
+                -marginWidth 1
+                -marginHeight 1
+                -command "from LocusPicker.locusPickerUI import LocusPickerUI\nLocusPickerUI.showPicker()" 
+                -sourceType "python"  
+                -commandRepeatable 1 
+    			"LOCUSPickerLaunchShelfButton";
+        }
+
+        int $hasLocusPickerUserButton = 0;
+        for ($shelfButt in $shelfButtons) {
+            if ( `shelfButton -query -label $shelfButt` == "LOCUS Picker User" ) {
+                $hasLocusPickerUserButton = 1;
+                break;
+            }
+        }
+        if ( !$hasLocusPickerUserButton ) {
+            shelfButton
+                -parent "LOCUS_TOOLS"
+                -enableCommandRepeat 1
+                -enable 1
+                -width 35
+                -height 35
+                -manage 1
+                -visible 1
+                -preventOverride 0
+                -annotation "Show LOCUS Picker User Tool UI" 
+                -enableBackground 0
+                -align "center" 
+                -label "LOCUS Picker User" 
+                -labelOffset 0
+                -font "plainLabelFont" 
+                -overlayLabelColor 0.8 0.8 0.8 
+                -overlayLabelBackColor 0 0 0 0.2 
+                -image "LocusPickerUser.png" 
+                -image1 "LocusPickerUser.png" 
+                -style "iconOnly" 
+                -marginWidth 1
+                -marginHeight 1
+                -command "from LocusPicker.locusPickerLauncherUI import LocusPickerLauncherUI\nLocusPickerLauncherUI.showPicker()" 
+                -sourceType "python"  
+                -commandRepeatable 1 
+                "LOCUSPickerUserLaunchShelfButton";
+        }
+
+		optionVar -stringValue "LOCUSTOOL_PICKER" "2.0" ;
+    }
+
+	shelfTabLayout -edit -selectTab "LOCUS_TOOLS" $gShelfTopLevel ;
+};		 
+				
