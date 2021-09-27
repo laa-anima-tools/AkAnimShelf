@@ -117,9 +117,9 @@ class PlaybackTools(object):
         else:
             cmd.warning('{0} playback mode not defined.'.format(self._playback_mode))
 
-        cmd.undoInfo(state=False)
+        cmd.undoInfo(stateWithoutFlush=False)
         self._playback_utils.set_current_time(next_time)
-        cmd.undoInfo(state=True)
+        cmd.undoInfo(stateWithoutFlush=True)
 
     # ============================================================================= #
     # GO TO THE PREV FRAME                                                          #
@@ -149,69 +149,69 @@ class PlaybackTools(object):
         else:
             cmd.warning('{0} playback mode not defined.'.format(self._playback_mode))
 
-        cmd.undoInfo(state=False)
+        cmd.undoInfo(stateWithoutFlush=False)
         self._playback_utils.set_current_time(prev_time)
-        cmd.undoInfo(state=True)
+        cmd.undoInfo(stateWithoutFlush=True)
 
     # ============================================================================= #
     # NEXT FRAME PLAYBACK                                                           #
     # ============================================================================= #
     def next_frame_playback_press(self):
-        cmd.undoInfo(state=False)
+        cmd.undoInfo(stateWithoutFlush=False)
         PlaybackTools.set_pressed_state(True)
         self.go_to_the_next_frame()
         timer = cor.QTimer()
         timer.singleShot(TIMEOUT, PlaybackTools.play_timeline_forward)
-        cmd.undoInfo(state=True)
+        cmd.undoInfo(stateWithoutFlush=True)
 
     # ============================================================================= #
     # NEXT FRAME PLAYBACK RELEASE                                                   #
     # ============================================================================= #
     def next_frame_playback_release(self):
-        cmd.undoInfo(state=False)
+        cmd.undoInfo(stateWithoutFlush=False)
         PlaybackTools.set_pressed_state(False)
         if PlaybackTools.is_playing():
             PlaybackTools.stop_timeline()
-        cmd.undoInfo(state=True)
+        cmd.undoInfo(stateWithoutFlush=True)
 
     # ============================================================================= #
     # PREV FRAME PLAYBACK PRESS                                                     #
     # ============================================================================= #
     def prev_frame_playback_press(self):
-        cmd.undoInfo(state=False)
+        cmd.undoInfo(stateWithoutFlush=False)
         PlaybackTools.set_pressed_state(True)
         self.go_to_the_prev_frame()
         timer = cor.QTimer()
         timer.singleShot(TIMEOUT, PlaybackTools.play_timeline_back)
-        cmd.undoInfo(state=True)
+        cmd.undoInfo(stateWithoutFlush=True)
 
     # ============================================================================= #
     # PREV FRAME PLAYBACK RELEASE                                                   #
     # ============================================================================= #
     def prev_frame_playback_release(self):
-        cmd.undoInfo(state=False)
+        cmd.undoInfo(stateWithoutFlush=False)
         PlaybackTools.set_pressed_state(False)
         if PlaybackTools.is_playing():
             PlaybackTools.stop_timeline()
-        cmd.undoInfo(state=False)
+        cmd.undoInfo(stateWithoutFlush=False)
 
     # ============================================================================= #
     # NEXT KEY                                                                      #
     # ============================================================================= #
     def go_to_the_next_key(self):
-        cmd.undoInfo(state=False)
+        cmd.undoInfo(stateWithoutFlush=False)
         next_key = cmd.findKeyframe(timeSlider=True, which="next")
         self._playback_utils.set_current_time(next_key)
-        cmd.undoInfo(state=True)
+        cmd.undoInfo(stateWithoutFlush=True)
 
     # ============================================================================= #
     # PREV KEY                                                                      #
     # ============================================================================= #
     def go_to_the_prev_key(self):
-        cmd.undoInfo(state=False)
+        cmd.undoInfo(stateWithoutFlush=False)
         prev_key = cmd.findKeyframe(timeSlider=True, which="previous")
         self._playback_utils.set_current_time(prev_key)
-        cmd.undoInfo(state=True)
+        cmd.undoInfo(stateWithoutFlush=True)
 
     # ============================================================================= #
     # ADD TIMELINE MARKER                                                           #
