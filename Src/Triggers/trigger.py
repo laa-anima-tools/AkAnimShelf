@@ -28,6 +28,7 @@ from PySide2 import QtWidgets as wdg
 # from AkAnimShelf.Src.Core.Viewport import viewport_tools as vpt; reload(vpt)
 from AkAnimShelf.Src.Core.Playback.PlaybackTools import playback_tools as pbt; reload(pbt)
 from AkAnimShelf.Src.Core.Playback.KeyMarkers import key_markers as kmk; reload(kmk)
+from AkAnimShelf.Src.Core.Playback.FrameMarker import frame_marker as fmk; reload(fmk)
 from AkAnimShelf.Src.Core.Keyframing.GraphEditor import graph_editor as grp; reload(grp)
 from AkAnimShelf.Src.Core.Navigation import transform_modes as trs; reload(trs)
 from AkAnimShelf.Src.Utils import info_utils as info; reload(info)
@@ -48,6 +49,17 @@ class Trigger(cor.QObject):
     camera_hpan_changed = cor.Signal(float)
     camera_vpan_changed = cor.Signal(float)
 
+    # try:
+    #     frame_markers.setParent(None)
+    #     frame_markers.deleteLater()
+    #     frame_markers = None
+    # except:
+    #     pass
+    # frame_markers.setParent(None)
+    # frame_markers.deleteLater()
+    frame_markers = None
+
+
     def __init__(self):
         super(Trigger, self).__init__()
 
@@ -58,6 +70,15 @@ class Trigger(cor.QObject):
         # self._viewport_tools = vpt.ViewportTools()
         self._playback_tools = pbt.PlaybackTools()
         self._key_markers = kmk.KeyMarkers()
+        self._frame_marker = fmk.FrameMarker()
+        # try:
+        #     self._frame_markers.setParent(None)
+        #     self._frame_markers.deleteLater()
+        #     self._frame_markers = None
+        # except:
+        #     pass
+        # self._frame_markers = fmk.FrameMarkers()
+        # self._frame_markers.setVisible(True)
         self._graph_editor = grp.GraphEditor()
         self._transform_modes = trs.TransformModes()
 
@@ -453,7 +474,26 @@ class Trigger(cor.QObject):
     def start_frame(self, modifier=None):
         print('start_frame')
 
+    # =========================================================================
+    # LOAD FRAME MARKERS
+    # =========================================================================
+    def load_frame_markers(self):
+        print ('load frame marker')
+        self.supress_script_editor_info(True)
+        fmk.load_frame_markers()
+        info.show_message('Frame Markers Loaded')
+        self.supress_script_editor_info(False)
 
+    # =========================================================================
+    # TOGGLE ROTATE MODE
+    # =========================================================================
+    def add_frame_marker(self, marker_type):
+        print ('add frame marker')
+        self.supress_script_editor_info(True)
+        Trigger.frame_markers.add_frame_marker(marker_type)
+        Trigger.frame_markers.setVisible(True)
+        info.show_message('Frame Marker Added')
+        self.supress_script_editor_info(False)
 
     def add_timeline_marker(self, marker):
         print('add_timeline_marker')
