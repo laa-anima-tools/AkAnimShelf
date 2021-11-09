@@ -34,12 +34,17 @@ from AkAnimShelf.Src.Core.Navigation import transform_modes as trs; reload(trs)
 from AkAnimShelf.Src.Utils import info_utils as info; reload(info)
 from AkAnimShelf.Src.Data import user_data as data; reload(data)
 
+from AkAnimShelf.Src.Utils import maya_widgets_utils as mwu; reload(mwu)
+
+global AK_FRAME_MARKER
+
 
 MOVE, ROTATE, SCALE = 'Move', 'Rotate', 'Scale'
 MODIFIER = 'Control', 'Alt', 'Shift'
 BASE_LAYER, DEFAULT_LAYER = 'BaseAnimation', 'layer001'
 NONE, CTRL, ALT, SHIFT = 0, 1, 2, 3
 RED, GREEN, BLUE, YELLOW, PINK, ORANGE = 12, 18, 17, 21, 19, 20
+TIME_CONTROL_OBJ = "$gPlayBackSlider"
 
 class Trigger(cor.QObject):
     info_sent = cor.Signal(str)
@@ -478,22 +483,34 @@ class Trigger(cor.QObject):
     # LOAD FRAME MARKERS
     # =========================================================================
     def load_frame_markers(self):
-        print ('load frame marker')
-        self.supress_script_editor_info(True)
-        fmk.load_frame_markers()
-        info.show_message('Frame Markers Loaded')
-        self.supress_script_editor_info(False)
+        # self.supress_script_editor_info(True)
+        # fmk.load_frame_markers()
+        # info.show_message('Frame Markers Loaded')
+        # self.supress_script_editor_info(False)
+        global AK_FRAME_MARKER
+
+        try:
+            AK_FRAME_MARKER.setParent(None)
+            AK_FRAME_MARKER.deleteLater()
+            AK_FRAME_MARKER = None
+        except:
+            pass
+
+        parent = mwu.MayaWidgetsUtils.get_maya_control(TIME_CONTROL_OBJ)
+        AK_FRAME_MARKER = fmk.FrameMarker()
+        AK_FRAME_MARKER.setVisible(True)
 
     # =========================================================================
     # TOGGLE ROTATE MODE
     # =========================================================================
     def add_frame_marker(self, marker_type):
         print ('add frame marker')
-        self.supress_script_editor_info(True)
-        Trigger.frame_markers.add_frame_marker(marker_type)
-        Trigger.frame_markers.setVisible(True)
-        info.show_message('Frame Marker Added')
-        self.supress_script_editor_info(False)
+        # self.supress_script_editor_info(True)
+        # Trigger.frame_markers.add_frame_marker(marker_type)
+        # Trigger.frame_markers.setVisible(True)
+        # info.show_message('Frame Marker Added')
+        # self.supress_script_editor_info(False)
+        AK_FRAME_MARKER.add_frame_marker(1, 0)
 
     def add_timeline_marker(self, marker):
         print('add_timeline_marker')

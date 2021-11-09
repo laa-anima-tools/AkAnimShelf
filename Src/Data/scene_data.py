@@ -8,7 +8,7 @@ class SceneData(object):
 
     @classmethod
     def load_scene_data(cls, key):
-        data = []
+        data = {}
         stored_data = cmd.fileInfo(key, q=True)
         if stored_data:
             data = json.loads(stored_data[0].replace('\\"', '"'))
