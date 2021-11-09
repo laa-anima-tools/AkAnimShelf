@@ -27,17 +27,12 @@ from PySide2 import QtWidgets as wdg
 # from AkAnimShelf.Src.Core.Selection import selector as sel; reload(sel)
 # from AkAnimShelf.Src.Core.Viewport import viewport_tools as vpt; reload(vpt)
 from AkAnimShelf.Src.Core.Playback.PlaybackTools import playback_tools as pbt; reload(pbt)
-from AkAnimShelf.Src.Core.Playback.KeyMarkers import key_markers as kmk; reload(kmk)
 from AkAnimShelf.Src.Core.Playback.FrameMarker import frame_marker as fmk; reload(fmk)
 from AkAnimShelf.Src.Core.Keyframing.GraphEditor import graph_editor as grp; reload(grp)
 from AkAnimShelf.Src.Core.Navigation import transform_modes as trs; reload(trs)
-from AkAnimShelf.Src.Utils import info_utils as info; reload(info)
 from AkAnimShelf.Src.Data import user_data as data; reload(data)
-
+from AkAnimShelf.Src.Utils import info_utils as info; reload(info)
 from AkAnimShelf.Src.Utils import maya_widgets_utils as mwu; reload(mwu)
-
-global AK_FRAME_MARKER
-
 
 MOVE, ROTATE, SCALE = 'Move', 'Rotate', 'Scale'
 MODIFIER = 'Control', 'Alt', 'Shift'
@@ -47,6 +42,8 @@ RED, GREEN, BLUE, YELLOW, PINK, ORANGE = 12, 18, 17, 21, 19, 20
 KEY, BREAKDOWN, INBETWEEN = 0, 1, 2
 TIME_CONTROL_OBJ = "$gPlayBackSlider"
 
+global AK_FRAME_MARKER
+
 class Trigger(cor.QObject):
     info_sent = cor.Signal(str)
     coordinate_system_changed = cor.Signal(list)
@@ -54,43 +51,22 @@ class Trigger(cor.QObject):
     camera_zoom_changed = cor.Signal(float)
     camera_hpan_changed = cor.Signal(float)
     camera_vpan_changed = cor.Signal(float)
-
-    # try:
-    #     frame_markers.setParent(None)
-    #     frame_markers.deleteLater()
-    #     frame_markers = None
-    # except:
-    #     pass
-    # frame_markers.setParent(None)
-    # frame_markers.deleteLater()
     frame_markers = None
-
 
     def __init__(self):
         super(Trigger, self).__init__()
 
-        # self._common_tools = cmt.CommonTools()
-        # self._timeline_tools = tmt.TimelineTools()
-        # self._layer_tools = lyt.LayerTools()
-        # self._selector = sel.Selector()
-        # self._viewport_tools = vpt.ViewportTools()
         self._playback_tools = pbt.PlaybackTools()
         self._key_markers = kmk.KeyMarkers()
         self._frame_marker = fmk.FrameMarker()
-        # try:
-        #     self._frame_markers.setParent(None)
-        #     self._frame_markers.deleteLater()
-        #     self._frame_markers = None
-        # except:
-        #     pass
-        # self._frame_markers = fmk.FrameMarkers()
-        # self._frame_markers.setVisible(True)
         self._graph_editor = grp.GraphEditor()
         self._transform_modes = trs.TransformModes()
-
         self._selected_channels = []
         self._colors = [RED, GREEN, BLUE, YELLOW, PINK, ORANGE]
 
+    # =========================================================================
+    # SUPRESS SCRIPT EDITOR_INFO
+    # =========================================================================
     def supress_script_editor_info(self, state=True):
         cmd.scriptEditorInfo(suppressInfo=state, suppressErros=state, suppressWarnings=state)
 
@@ -417,13 +393,6 @@ class Trigger(cor.QObject):
     #     print('set_camera_panzoom_attrs')
 
     # =========================================================================
-    # PLAYBACK TOOLS TRIGGER
-    # =========================================================================
-    def add_key_marker_frame(self, modifier=None):
-        key_markers = kmk.KeyMarkers()
-        self._key_markers.add_frame()
-
-    # =========================================================================
     # GO TO THE NEXT FRAME
     # =========================================================================
     def go_to_the_next_frame(self, modifier=None):
@@ -484,10 +453,8 @@ class Trigger(cor.QObject):
     # LOAD FRAME MARKERS
     # =========================================================================
     def load_frame_markers(self):
-        # self.supress_script_editor_info(True)
-        # fmk.load_frame_markers()
-        # info.show_message('Frame Markers Loaded')
-        # self.supress_script_editor_info(False)
+        self.supress_script_editor_info(True)
+        info.show_message('Frame Markers Loaded')
         global AK_FRAME_MARKER
 
         try:
@@ -500,6 +467,7 @@ class Trigger(cor.QObject):
         parent = mwu.MayaWidgetsUtils.get_maya_control(TIME_CONTROL_OBJ)
         AK_FRAME_MARKER = fmk.FrameMarker()
         AK_FRAME_MARKER.setVisible(True)
+        self.supress_script_editor_info(False)
 
     # =========================================================================
     # ADD FRAME MARKERS
@@ -528,89 +496,89 @@ class Trigger(cor.QObject):
         AK_FRAME_MARKER.clear_all_frame_markers()
         self.supress_script_editor_info(False)
 
-    # ============================================================================= #
-    # LIST MARKER KEYTIMES                                                          #
-    # ============================================================================= #
-    def list_markers_keytimes(self, marker_type):
-        print('list_marker_keytimes')
-        self._playback_tools.list_markers_keytimes()
+    # # ============================================================================= #
+    # # LIST MARKER KEYTIMES                                                          #
+    # # ============================================================================= #
+    # def list_markers_keytimes(self, marker_type):
+    #     print('list_marker_keytimes')
+    #     self._playback_tools.list_markers_keytimes()
 
-    # ============================================================================= #
-    # SHARE KEYS ON MARKERS                                                         #
-    # ============================================================================= #
-    def share_keys_on_markers(self, marker_type):
-        print('share_keys_on_markers')
-        self._playback_tools.share_keys_on_markers()
+    # # ============================================================================= #
+    # # SHARE KEYS ON MARKERS                                                         #
+    # # ============================================================================= #
+    # def share_keys_on_markers(self, marker_type):
+    #     print('share_keys_on_markers')
+    #     self._playback_tools.share_keys_on_markers()
 
-    # ============================================================================= #
-    # GO TO THE NEXT MARKER                                                         #
-    # ============================================================================= #
-    def go_to_the_next_marker(self, marker_type):
-        print('go_to_the_next_marker')
-        self._playback_tools.go_to_the_next_marker()
+    # # ============================================================================= #
+    # # GO TO THE NEXT MARKER                                                         #
+    # # ============================================================================= #
+    # def go_to_the_next_marker(self, marker_type):
+    #     print('go_to_the_next_marker')
+    #     self._playback_tools.go_to_the_next_marker()
 
-    def end_frame(self, modifier=None):
-        print('end_frame')
-
-    def prev_marker(self, modifier=None):
-        print('prev_marker')
-
-    def prev_shot(self, modifier=None):
-        print('prev_shot')
-
-    def next_shot(self, modifier=None):
-        print('next_shot')
-
-    def next_marker(self, modifier=None):
-        print('next_marker')
-
-    def swap_shot_left(self, modifier=None):
-        print('swap_shot_left')
-
-    def prev_base_layer_key(self, modifier=None):
-        print('prev_base_layer_key')
-
-    def next_base_layer_key(self, modifier=None):
-        print('next_base_layer_key')
-
-    def swap_shot_right(self, modifier=None):
-        print('swap_shot_right')
-
-    def crop_timeline_left(self, modifier=None):
-        print('crop_timeline_left')
-        self._playback_tools.crop_timeline_left()
-        self.info_sent.emit('> Crop Timeline Left')
-
-    def move_start_time_to_current_frame(self, modifier=None):
-        print('move_start_time_to_current_frame')
-        self._playback_tools.move_start_time_to_current_frame()
-        self.info_sent.emit('> Move Start Time to Current Frame')
-
-    def move_end_time_to_current_frame(self, modifier=None):
-        print('move_end_time_to_current_frame')
-        self._playback_tools.move_end_time_to_current_frame()
-        self.info_sent.emit('> Move End Time to Current Frame')
-
-    def crop_timeline_right(self, modifier=None):
-        print('crop_timeline_left')
-        self._playback_tools.crop_timeline_right()
-        self.info_sent.emit('> Crop Timeline Right')
-
-    def frame_prev_section(self, modifier=None):
-        print('frame_prev_section')
-
-    def center_cursor_to_range(self, modifier=None):
-        print('center_cursor_to_range')
-        self._playback_tools.center_cursor_to_range()
-        self.info_sent.emit('> Center Cursor to Range')
-
-    def center_range_to_cursor(self, modifier=None):
-        print('center_range_to_cursor')
-        self._playback_tools.center_range_to_cursor()
-        self.info_sent.emit('> Center Range to Cursor')
-
-    def frame_next_section(self, modifier=None):
-        print('frame_next_section')
+    # def end_frame(self, modifier=None):
+    #     print('end_frame')
+    #
+    # def prev_marker(self, modifier=None):
+    #     print('prev_marker')
+    #
+    # def prev_shot(self, modifier=None):
+    #     print('prev_shot')
+    #
+    # def next_shot(self, modifier=None):
+    #     print('next_shot')
+    #
+    # def next_marker(self, modifier=None):
+    #     print('next_marker')
+    #
+    # def swap_shot_left(self, modifier=None):
+    #     print('swap_shot_left')
+    #
+    # def prev_base_layer_key(self, modifier=None):
+    #     print('prev_base_layer_key')
+    #
+    # def next_base_layer_key(self, modifier=None):
+    #     print('next_base_layer_key')
+    #
+    # def swap_shot_right(self, modifier=None):
+    #     print('swap_shot_right')
+    #
+    # def crop_timeline_left(self, modifier=None):
+    #     print('crop_timeline_left')
+    #     self._playback_tools.crop_timeline_left()
+    #     self.info_sent.emit('> Crop Timeline Left')
+    #
+    # def move_start_time_to_current_frame(self, modifier=None):
+    #     print('move_start_time_to_current_frame')
+    #     self._playback_tools.move_start_time_to_current_frame()
+    #     self.info_sent.emit('> Move Start Time to Current Frame')
+    #
+    # def move_end_time_to_current_frame(self, modifier=None):
+    #     print('move_end_time_to_current_frame')
+    #     self._playback_tools.move_end_time_to_current_frame()
+    #     self.info_sent.emit('> Move End Time to Current Frame')
+    #
+    # def crop_timeline_right(self, modifier=None):
+    #     print('crop_timeline_left')
+    #     self._playback_tools.crop_timeline_right()
+    #     self.info_sent.emit('> Crop Timeline Right')
+    #
+    # def frame_prev_section(self, modifier=None):
+    #     print('frame_prev_section')
+    #
+    # def center_cursor_to_range(self, modifier=None):
+    #     print('center_cursor_to_range')
+    #     self._playback_tools.center_cursor_to_range()
+    #     self.info_sent.emit('> Center Cursor to Range')
+    #
+    # def center_range_to_cursor(self, modifier=None):
+    #     print('center_range_to_cursor')
+    #     self._playback_tools.center_range_to_cursor()
+    #     self.info_sent.emit('> Center Range to Cursor')
+    #
+    # def frame_next_section(self, modifier=None):
+    #     print('frame_next_section')
 
     # =========================================================================
     # CHANNEL BOX

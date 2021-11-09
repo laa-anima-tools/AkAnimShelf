@@ -44,10 +44,6 @@ class FrameMarker(wdg.QWidget):
 
         self.initiate_markers()
 
-        # timeline_range = self.get_timeline_range()
-        # for frame in timeline_range:
-        #     self.add_frame_marker(frame, KEY)
-
     # =========================================================================
     # INITIATE MARKERS
     # =========================================================================
@@ -125,17 +121,17 @@ class FrameMarker(wdg.QWidget):
         self.markers[TYPES] = []
         self.refresh_markers()
 
-    # =========================================================================
-    # CLEAR SELECTED FRAME MARKERS
-    # =========================================================================
-    def clear_selected_frame_markers(self):
-        frame_times = self.get_selected_frame_times()
-        for marker in self.markers:
-            #print marker[FRAME]
-            self.markers.remove(marker)
-            # if marker[FRAME] in frame_times:
-            #     del self.markers[index]
-        self.refresh_markers()
+    # # =========================================================================
+    # # CLEAR SELECTED FRAME MARKERS
+    # # =========================================================================
+    # def clear_selected_frame_markers(self):
+    #     frame_times = self.get_selected_frame_times()
+    #     for marker in self.markers:
+    #         #print marker[FRAME]
+    #         self.markers.remove(marker)
+    #         # if marker[FRAME] in frame_times:
+    #         #     del self.markers[index]
+    #     self.refresh_markers()
 
     # =========================================================================
     # CLEAR ALL FRAME MARKERS
@@ -155,34 +151,34 @@ class FrameMarker(wdg.QWidget):
             return index, frame, type
         return -1, frame, None
 
-    # =========================================================================
-    # GET MARKERS TIMES
-    # =========================================================================
-    def get_markers_times(self, marker_type):
-        if marker_type == ALL:
-            return sorted(self.markers.keys())
-        markers_times = []
-        for marker in sorted(self.markers.keys()):
-            if self.markers[marker] == marker_type:
-                markers_times.append(marker)
-        return markers_times
+    # # =========================================================================
+    # # GET MARKERS TIMES
+    # # =========================================================================
+    # def get_markers_times(self, marker_type):
+    #     if marker_type == ALL:
+    #         return sorted(self.markers.keys())
+    #     markers_times = []
+    #     for marker in sorted(self.markers.keys()):
+    #         if self.markers[marker] == marker_type:
+    #             markers_times.append(marker)
+    #     return markers_times
 
     # =========================================================================
     # GET SELECTED FRAME TIMES
     # =========================================================================
-    def get_selected_frame_times(self):
-        selected_range = self.get_selected_range()
-        frame_times = []
-        for frame_time in range(selected_range[0], selected_range[1]):
-            frame_times.append(frame_time)
-        return frame_times
+    # def get_selected_frame_times(self):
+    #     selected_range = self.get_selected_range()
+    #     frame_times = []
+    #     for frame_time in range(selected_range[0], selected_range[1]):
+    #         frame_times.append(frame_time)
+    #     return frame_times
 
-    # =========================================================================
-    # GET SELECTED RANGE
-    # =========================================================================
-    def get_selected_range(self):
-        selected_range = cmd.timeControl(self.time_control, q=True, rangeArray=True)
-        return [int(selected_range[0]), int(selected_range[1])]
+    # # =========================================================================
+    # # GET SELECTED RANGE
+    # # =========================================================================
+    # def get_selected_range(self):
+    #     selected_range = cmd.timeControl(self.time_control, q=True, rangeArray=True)
+    #     return [int(selected_range[0]), int(selected_range[1])]
 
     # =========================================================================
     # GET TIMELINE RANGE
