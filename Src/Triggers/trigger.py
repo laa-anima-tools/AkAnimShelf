@@ -502,23 +502,31 @@ class Trigger(cor.QObject):
         AK_FRAME_MARKER.setVisible(True)
 
     # =========================================================================
-    # TOGGLE ROTATE MODE
+    # ADD FRAME MARKERS
     # =========================================================================
     def add_frame_markers(self, type):
-        # self.supress_script_editor_info(True)
-        # Trigger.frame_markers.add_frame_marker(marker_type)
-        # Trigger.frame_markers.setVisible(True)
-        # info.show_message('Frame Marker Added')
-        # self.supress_script_editor_info(False)
-        AK_FRAME_MARKER.add_frame_markers(0)
+        self.supress_script_editor_info(True)
+        info.show_message('Frame Marker Added')
+        AK_FRAME_MARKER.add_frame_markers(type)
+        self.supress_script_editor_info(False)
 
-    def add_timeline_marker(self, marker):
-        print('add_timeline_marker')
-        self._playback_tools.add_timeline_marker(marker)
+    # =========================================================================
+    # REMOVE FRAME MARKERS
+    # =========================================================================
+    def remove_frame_markers(self):
+        self.supress_script_editor_info(True)
+        info.show_message('Frame Marker Removed')
+        AK_FRAME_MARKER.remove_frame_markers()
+        self.supress_script_editor_info(False)
 
-    def remove_timeline_marker(self):
-        print('remove_timeline_marker')
-        self._playback_tools.remove_timeline_marker()
+    # =========================================================================
+    # CLEAR ALL FRAME MARKERS
+    # =========================================================================
+    def clear_all_frame_markers(self):
+        self.supress_script_editor_info(True)
+        info.show_message('Frame Markers Cleared')
+        AK_FRAME_MARKER.clear_all_frame_markers()
+        self.supress_script_editor_info(False)
 
     # ============================================================================= #
     # LIST MARKER KEYTIMES                                                          #

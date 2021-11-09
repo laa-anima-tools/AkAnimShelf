@@ -16,6 +16,7 @@ from AkAnimShelf.Src.Data import scene_data as scn; reload(scn)
 
 FRAMES, TYPES = 'frames', 'types'
 KEY, BREAKDOWN, INBETWEEN, ALL = 0, 1, 2, 3
+INDEX, FRAME, TYPE = 0, 1, 2
 TIME_CONTROL_OBJ = "$gPlayBackSlider"
 
 global AK_FRAME_MARKER
@@ -90,6 +91,15 @@ class FrameMarker(wdg.QWidget):
         self.refresh_markers()
 
     # =========================================================================
+    # REMOVE FRAME MARKERS
+    # =========================================================================
+    def remove_frame_markers(self):
+        print 'remove frame markers'
+        frames = self.get_timeline_range()
+        for frame in frames:
+            self.remove_frame_marker(frame)
+
+    # =========================================================================
     # REMOVE FRAME MARKER
     # =========================================================================
     def remove_frame_marker(self, frame):
@@ -131,7 +141,8 @@ class FrameMarker(wdg.QWidget):
     # CLEAR ALL FRAME MARKERS
     # =========================================================================
     def clear_all_frame_markers(self):
-        self.markers = []
+        self.markers[FRAMES] = []
+        self.markers[TYPES] = []
         self.refresh_markers()
 
     # =========================================================================
@@ -188,8 +199,8 @@ class FrameMarker(wdg.QWidget):
             return
 
         self.draw_frame_markers(KEY)
-        # self.draw_frame_markers(BREAKDOWN)
-        # self.draw_frame_markers(INBETWEEN)
+        self.draw_frame_markers(BREAKDOWN)
+        self.draw_frame_markers(INBETWEEN)
 
     # =========================================================================
     # DRAW FRAME MARKERS
@@ -218,23 +229,9 @@ class FrameMarker(wdg.QWidget):
             fill_color.setAlpha(75)
 
             for frame_time in self.markers[FRAMES]:
-                frame_x = padding + ((frame_time - range_start) * frame_width) + 0.5
-                painter.fillRect(frame_x, frame_y, frame_width, frame_height, fill_color)
-                painter.drawRect(frame_x, frame_y, frame_width, frame_height)
+                data = self.get_data_from_frame(frame_time)
+                if data[TYPE] == marker_type:
+                    frame_x = padding + ((frame_time - range_start) * frame_width) + 0.5
+                    painter.fillRect(frame_x, frame_y, frame_width, frame_height, fill_color)
+                    painter.drawRect(frame_x, frame_y, frame_width, frame_height)
 
-# =============================================================================
-# LOAD FRAME MARKER
-# =============================================================================
-def load_frame_markers():
-    global AK_FRAME_MARKER
-
-    try:
-        AK_FRAME_MARKER.setParent(None)
-        AK_FRAME_MARKER.deleteLater()
-        AK_FRAME_MARKER = None
-    except:
-        pass
-
-    parent = mwu.MayaWidgetsUtils.get_maya_control(TIME_CONTROL_OBJ)
-    AK_FRAME_MARKER = FrameMarker()
-    AK_FRAME_MARKER.setVisible(True)
