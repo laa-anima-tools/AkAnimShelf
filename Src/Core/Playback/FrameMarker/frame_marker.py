@@ -63,6 +63,15 @@ class FrameMarker(wdg.QWidget):
         self.update()
 
     # =========================================================================
+    # ADD FRAME MARKERS
+    # =========================================================================
+    def add_frame_markers(self, type):
+        print 'add frame markers'
+        frames = self.get_timeline_range()
+        for frame in frames:
+            self.add_frame_marker(frame, type)
+
+    # =========================================================================
     # ADD FRAME MARKER
     # =========================================================================
     def add_frame_marker(self, frame, type):

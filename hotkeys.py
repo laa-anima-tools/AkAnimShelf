@@ -2,9 +2,12 @@
 # SMART KEY | Alt + S                                                           #
 # ============================================================================= #
 from AkAnimShelf.Src.Triggers import trigger as trg
+
+import Src.Triggers.trigger2
+
 reload(trg)
 
-trg.Trigger().smart_key()
+Src.Triggers.trigger2.Trigger().smart_key()
 
 # ============================================================================= #
 # TOGGLE MOVE MODE | W                                                          #
@@ -12,7 +15,7 @@ trg.Trigger().smart_key()
 from AkAnimShelf.Src.Triggers import trigger
 reload(trigger)
 
-trigger.Trigger().toggle_move_mode()
+Src.Triggers.trigger2.Trigger().toggle_move_mode()
 
 # ============================================================================= #
 # TOGGLE MOVE MODE | E                                                          #
@@ -20,7 +23,7 @@ trigger.Trigger().toggle_move_mode()
 from AkAnimShelf.Src.Triggers import trigger
 reload(trigger)
 
-trigger.Trigger().toggle_rotate_mode()
+Src.Triggers.trigger2.Trigger().toggle_rotate_mode()
 
 # ============================================================================= #
 # TOGGLE MOVE MODE | R                                                          #
@@ -28,7 +31,7 @@ trigger.Trigger().toggle_rotate_mode()
 from AkAnimShelf.Src.Triggers import trigger
 reload(trigger)
 
-trigger.Trigger().toggle_scale_mode()
+Src.Triggers.trigger2.Trigger().toggle_scale_mode()
 
 # ============================================================================= #
 # GO TO THE NEXT FRAME | x                                                      #
@@ -36,7 +39,7 @@ trigger.Trigger().toggle_scale_mode()
 from AkAnimShelf.Src.Triggers import trigger as trg
 reload(trg)
 
-trg.Trigger().go_to_the_next_frame()
+Src.Triggers.trigger2.Trigger().go_to_the_next_frame()
 
 # ============================================================================= #
 # GO TO THE PREVIOUS FRAME | Z                                                  #
@@ -44,7 +47,7 @@ trg.Trigger().go_to_the_next_frame()
 from AkAnimShelf.Src.Triggers import trigger as trg
 reload(trg)
 
-trg.Trigger().go_to_the_prev_frame()
+Src.Triggers.trigger2.Trigger().go_to_the_prev_frame()
 
 # ============================================================================= #
 # GO TO THE NEXT KEY | V                                                        #
@@ -52,7 +55,7 @@ trg.Trigger().go_to_the_prev_frame()
 from AkAnimShelf.Src.Triggers import trigger as trg
 reload(trg)
 
-trg.Trigger().go_to_the_next_key()
+Src.Triggers.trigger2.Trigger().go_to_the_next_key()
 
 # ============================================================================= #
 # GO TO THE PREVIOUS KEY | C                                                    #
@@ -60,5 +63,5 @@ trg.Trigger().go_to_the_next_key()
 from AkAnimShelf.Src.Triggers import trigger as trg
 reload(trg)
 
-trg.Trigger().go_to_the_prev_key()
+Src.Triggers.trigger2.Trigger().go_to_the_prev_key()
 

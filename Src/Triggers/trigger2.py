@@ -1,51 +1,8 @@
-# -*- coding: utf-8 -*-
-"""
-=============================================================================
-MODULE: trigger.py
------------------------------------------------------------------------------
-This is an intermidiate module that triggers all the user actions. It is the
-module responsible for communicating with the GUI using the signal/slots
-mechanism. That´s the module that need to be imported when the user defines
-a hotkey.
------------------------------------------------------------------------------
-USAGE:
-# GO TO THE NEXT FRAME (Default Hotkey: X)
-from AkAnimShelf.Src.Triggers import trigger as trg
-trg.Trigger().go_to_the_next_frame()
------------------------------------------------------------------------------
-AUTHOR:   Leandro Adeodato
-VERSION:  v1.0.0 | Maya 2022 | Python 3
-=============================================================================
-"""
-import maya.cmds as cmd
 from PySide2 import QtCore as cor
-from PySide2 import QtWidgets as wdg
+from maya import cmds as cmd
 
-# from AkAnimShelf.Src.Core.Common import common_tools as cmt; reload(cmt)
-# from AkAnimShelf.Src.Core.Keyframing import timeline_tools as tmt; reload(tmt)
-# from AkAnimShelf.Src.Core.Keyframing import layer_tools as lyt; reload(lyt)
-# from AkAnimShelf.Src.Core.Selection import selector as sel; reload(sel)
-# from AkAnimShelf.Src.Core.Viewport import viewport_tools as vpt; reload(vpt)
-from AkAnimShelf.Src.Core.Playback.PlaybackTools import playback_tools as pbt; reload(pbt)
-from AkAnimShelf.Src.Core.Playback.KeyMarkers import key_markers as kmk; reload(kmk)
-from AkAnimShelf.Src.Core.Playback.FrameMarker import frame_marker as fmk; reload(fmk)
-from AkAnimShelf.Src.Core.Keyframing.GraphEditor import graph_editor as grp; reload(grp)
-from AkAnimShelf.Src.Core.Navigation import transform_modes as trs; reload(trs)
-from AkAnimShelf.Src.Utils import info_utils as info; reload(info)
-from AkAnimShelf.Src.Data import user_data as data; reload(data)
+from Src.Triggers.trigger import RED, GREEN, BLUE, YELLOW, PINK, ORANGE, TIME_CONTROL_OBJ, AK_FRAME_MARKER
 
-from AkAnimShelf.Src.Utils import maya_widgets_utils as mwu; reload(mwu)
-
-global AK_FRAME_MARKER
-
-
-MOVE, ROTATE, SCALE = 'Move', 'Rotate', 'Scale'
-MODIFIER = 'Control', 'Alt', 'Shift'
-BASE_LAYER, DEFAULT_LAYER = 'BaseAnimation', 'layer001'
-NONE, CTRL, ALT, SHIFT = 0, 1, 2, 3
-RED, GREEN, BLUE, YELLOW, PINK, ORANGE = 12, 18, 17, 21, 19, 20
-KEY, BREAKDOWN, INBETWEEN = 0, 1, 2
-TIME_CONTROL_OBJ = "$gPlayBackSlider"
 
 class Trigger(cor.QObject):
     info_sent = cor.Signal(str)
@@ -484,10 +441,8 @@ class Trigger(cor.QObject):
     # LOAD FRAME MARKERS
     # =========================================================================
     def load_frame_markers(self):
-        # self.supress_script_editor_info(True)
-        # fmk.load_frame_markers()
-        # info.show_message('Frame Markers Loaded')
-        # self.supress_script_editor_info(False)
+        self.supress_script_editor_info(True)
+        info.show_message('Frame Markers Loaded')
         global AK_FRAME_MARKER
 
         try:
@@ -500,17 +455,17 @@ class Trigger(cor.QObject):
         parent = mwu.MayaWidgetsUtils.get_maya_control(TIME_CONTROL_OBJ)
         AK_FRAME_MARKER = fmk.FrameMarker()
         AK_FRAME_MARKER.setVisible(True)
+        self.supress_script_editor_info(False)
 
     # =========================================================================
     # TOGGLE ROTATE MODE
     # =========================================================================
-    def add_frame_markers(self, type):
-        # self.supress_script_editor_info(True)
-        # Trigger.frame_markers.add_frame_marker(marker_type)
-        # Trigger.frame_markers.setVisible(True)
-        # info.show_message('Frame Marker Added')
-        # self.supress_script_editor_info(False)
-        AK_FRAME_MARKER.add_frame_markers(0)
+    def add_frame_marker(self, marker_type):
+        print ('add frame marker')
+        self.supress_script_editor_info(True)
+        info.show_message('Frame Marker Added')
+        AK_FRAME_MARKER.add_frame_marker(1, 0)
+        self.supress_script_editor_info(False)
 
     def add_timeline_marker(self, marker):
         print('add_timeline_marker')
@@ -717,14 +672,3 @@ class Trigger(cor.QObject):
     #
     # def toggle_expert_mode(self, modifier=None):
     #     print('toggle_expert_mode')
-
-
-
-
-
-
-
-
-
-
-
