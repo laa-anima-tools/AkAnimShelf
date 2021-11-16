@@ -65,3 +65,65 @@ reload(trg)
 
 Src.Triggers.trigger2.Trigger().go_to_the_prev_key()
 
+# ============================================================================= #
+# LOAD FRAME MARKERS                                                            #
+# ============================================================================= #
+from AkAnimShelf.Src.Controllers import playback_ctrl
+reload(playback_ctrl)
+
+playback_ctrl.PlaybackController().load_frame_markers()
+
+# ============================================================================= #
+# ADD KEY MARKER | K                                                            #
+# ============================================================================= #
+from AkAnimShelf.Src.Controllers import playback_ctrl
+reload(playback_ctrl)
+
+KEY, BREAKDOWN, INBETWEEN = 0, 1, 2
+
+playback_ctrl.PlaybackController().add_frame_markers(KEY)
+
+# ============================================================================= #
+# ADD BREAKDOWN MARKER | J                                                      #
+# ============================================================================= #
+from AkAnimShelf.Src.Controllers import playback_ctrl
+reload(playback_ctrl)
+
+KEY, BREAKDOWN, INBETWEEN = 0, 1, 2
+
+playback_ctrl.PlaybackController().add_frame_markers(BREAKDOWN)
+
+# ============================================================================= #
+# ADD INBETWEEN MARKER | L                                                      #
+# ============================================================================= #
+from AkAnimShelf.Src.Controllers import playback_ctrl
+reload(playback_ctrl)
+
+KEY, BREAKDOWN, INBETWEEN = 0, 1, 2
+
+playback_ctrl.PlaybackController().add_frame_markers(INBETWEEN)
+
+# ============================================================================= #
+# REMOVE FRAME MARKERS                                                          #
+# ============================================================================= #
+from AkAnimShelf.Src.Controllers import playback_ctrl
+reload(playback_ctrl)
+
+playback_ctrl.PlaybackController().remove_frame_markers()
+
+# ============================================================================= #
+# CLEAR ALL FRAME MARKERS                                                       #
+# ============================================================================= #
+from AkAnimShelf.Src.Controllers import playback_ctrl
+reload(playback_ctrl)
+
+playback_ctrl.PlaybackController().clear_all_frame_markers()
+
+
+
+
+
+
+
+
+
