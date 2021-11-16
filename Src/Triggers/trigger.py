@@ -57,7 +57,6 @@ class Trigger(cor.QObject):
         super(Trigger, self).__init__()
 
         self._playback_tools = pbt.PlaybackTools()
-        self._key_markers = kmk.KeyMarkers()
         self._frame_marker = fmk.FrameMarker()
         self._graph_editor = grp.GraphEditor()
         self._transform_modes = trs.TransformModes()
