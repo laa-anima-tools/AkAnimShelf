@@ -14,9 +14,9 @@ def nextEyeCtrl(*args):
         return
 
     # Stores Eyes Controls Names
-    eyeControls = [charNsp + ':' + charPrefix + '_ac_cn_lookAt',
-                   charNsp + ':' + charPrefix + '_ac_rt_lookAt',
-                   charNsp + ':' + charPrefix + '_ac_lf_lookAt']
+    eyeControls = [charNsp + ':x_eyes_ctrl',
+                   charNsp + ':r_eye_ctrl',
+                   charNsp + ':l_eye_ctrl']
 
     eyeHuds = [charNsp.upper() + ' | EYES MASTER',
                charNsp.upper() + ' | RT EYE',

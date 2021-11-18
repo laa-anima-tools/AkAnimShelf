@@ -120,6 +120,17 @@ reload(playback_ctrl)
 playback_ctrl.PlaybackController().clear_all_frame_markers()
 
 
+# ============================================================================= #
+# SWITCH HOTKEYS SET                                                            #
+# ============================================================================= #
+from AkAnimShelf.Src.Controllers import navigation_ctrl
+reload(navigation_ctrl)
+
+navigation_ctrl.NavigationController().switch_hotkey_set()
+
+
+
+
 
 
 
