@@ -14,7 +14,7 @@ import maya.cmds as cmd
 import maya.mel as mel
 import pymel as pm
 
-from AkAnimShelf.Src.Utils import maya_widgets_utils; reload(maya_widgets_utils)
+from AkAnimShelf.Src.Utils import maya_widgets_utils;
 
 TIME_CONTROL_OBJ = "$gPlayBackSlider"
 ANIMATION, PLAYBACK = 0, 1

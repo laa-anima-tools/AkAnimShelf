@@ -21,16 +21,8 @@ import maya.cmds as cmd
 from PySide2 import QtCore as cor
 
 from AkAnimShelf.Src.Core.Keyframing.Timeline import timeline_tools
-# from AkAnimShelf.Src.Core.Keyframing.GraphEditor import graph_editor
-# from AkAnimShelf.Src.Core.Keyframing.AnimLayers import layer_tools
 from AkAnimShelf.Src.Utils import info_utils
 from AkAnimShelf.Src.Utils import maya_widgets_utils
-
-reload(timeline_tools)
-# reload(layer_tools)
-# reload(graph_editor)
-reload(info_utils)
-reload(maya_widgets_utils)
 
 KEY, BREAKDOWN, INBETWEEN = 0, 1, 2
 TIME_CONTROL_OBJ = "$gPlayBackSlider"

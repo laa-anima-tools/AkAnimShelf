@@ -21,7 +21,6 @@ import maya.cmds as cmd
 from PySide2 import QtCore as cor
 
 from AkAnimShelf.Src.Utils import animation_utils
-reload(animation_utils)
 
 NEXT, PREVIOUS, FIRST, LAST = 'next', 'previous', 'first', 'last'
 

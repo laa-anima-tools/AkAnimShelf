@@ -19,20 +19,14 @@ VERSION:  v1.0.0 | Maya 2022 | Python 3
 """
 import maya.cmds as cmd
 from PySide2 import QtCore as cor
-from PySide2 import QtWidgets as wdg
 
-# from AkAnimShelf.Src.Core.Common import common_tools as cmt; reload(cmt)
-# from AkAnimShelf.Src.Core.Keyframing import timeline_tools as tmt; reload(tmt)
-# from AkAnimShelf.Src.Core.Keyframing import layer_tools as lyt; reload(lyt)
-# from AkAnimShelf.Src.Core.Selection import selector as sel; reload(sel)
-# from AkAnimShelf.Src.Core.Viewport import viewport_tools as vpt; reload(vpt)
-from AkAnimShelf.Src.Core.Playback.PlaybackTools import playback_tools as pbt; reload(pbt)
-from AkAnimShelf.Src.Core.Playback.FrameMarker import frame_marker as fmk; reload(fmk)
-from AkAnimShelf.Src.Core.Keyframing.GraphEditor import graph_editor as grp; reload(grp)
-from AkAnimShelf.Src.Core.Navigation import transform_modes as trs; reload(trs)
-from AkAnimShelf.Src.Data import user_data as data; reload(data)
-from AkAnimShelf.Src.Utils import info_utils as info; reload(info)
-from AkAnimShelf.Src.Utils import maya_widgets_utils as mwu; reload(mwu)
+from AkAnimShelf.Src.Core.Playback.PlaybackTools import playback_tools as pbt
+from AkAnimShelf.Src.Core.Playback.FrameMarker import frame_marker as fmk
+from AkAnimShelf.Src.Core.Keyframing.GraphEditor import graph_editor as grp
+from AkAnimShelf.Src.Core.Navigation import transform_modes as trs
+from AkAnimShelf.Src.Data import user_data as data
+from AkAnimShelf.Src.Utils import info_utils as info
+from AkAnimShelf.Src.Utils import maya_widgets_utils as mwu
 
 MOVE, ROTATE, SCALE = 'Move', 'Rotate', 'Scale'
 MODIFIER = 'Control', 'Alt', 'Shift'

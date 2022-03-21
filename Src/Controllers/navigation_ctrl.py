@@ -22,11 +22,8 @@ from PySide2 import QtCore as cor
 
 from AkAnimShelf.Src.Utils import info_utils
 from AkAnimShelf.Src.Utils import maya_widgets_utils
-reload(info_utils)
-reload(maya_widgets_utils)
-
 from AkAnimShelf.Src.Core.Navigation import hotkeys_manager
-reload(hotkeys_manager)
+
 
 KEY, BREAKDOWN, INBETWEEN = 0, 1, 2
 TIME_CONTROL_OBJ = "$gPlayBackSlider"

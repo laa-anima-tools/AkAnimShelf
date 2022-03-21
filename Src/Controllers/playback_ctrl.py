@@ -25,10 +25,6 @@ from AkAnimShelf.Src.Core.Playback.FrameMarker import frame_marker
 from AkAnimShelf.Src.Utils import info_utils
 from AkAnimShelf.Src.Utils import maya_widgets_utils
 
-reload(playback_tools)
-reload(frame_marker)
-reload(info_utils)
-reload(maya_widgets_utils)
 
 KEY, BREAKDOWN, INBETWEEN = 0, 1, 2
 TIME_CONTROL_OBJ = "$gPlayBackSlider"

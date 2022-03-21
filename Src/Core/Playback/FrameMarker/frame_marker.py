@@ -11,8 +11,8 @@ from PySide2 import QtWidgets as wdg
 from PySide2 import QtGui as gui
 from PySide2 import QtCore as cor
 
-from AkAnimShelf.Src.Utils import maya_widgets_utils as mwu; reload(mwu)
-from AkAnimShelf.Src.Data import scene_data as scn; reload(scn)
+from AkAnimShelf.Src.Utils import maya_widgets_utils as mwu
+from AkAnimShelf.Src.Data import scene_data as scn
 
 FRAMES, TYPES = 'frames', 'types'
 KEY, BREAKDOWN, INBETWEEN, ALL = 0, 1, 2, 3
